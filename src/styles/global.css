@@ -7,11 +7,14 @@
 
 @theme {
     /* Light colors */
+    --color-light-gray: #f5f5f5;
     --color-light-blue: #e6f0fa;
     --color-light-black: #222222;
     --color-dark-blue: #0056b3;
     --color-plomo: #e0e0e0;
     --color-bright-blue: #004085;
+    --color-sea-blue: #002b5c;
+    --color-shadow-header: rgba(0 2px 4px rgba(0, 0, 0, 0.1));
 
     /* Dark colors */
     --color-acero: #4a5568;
