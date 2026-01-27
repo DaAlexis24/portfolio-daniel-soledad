@@ -1,5 +1,10 @@
 # Astro Starter Kit: Basics
 
+## Repositorio Inspiración
+
+- [Web_Rico](https://portfolio.ricoui.com/)
+- [GitHub_Repositorio](https://github.com/ricocc/ricoui-portfolio/blob/main/src/components/sections/Header.astro)
+
 ```sh
 npm create astro@latest -- --template basics
 ```
