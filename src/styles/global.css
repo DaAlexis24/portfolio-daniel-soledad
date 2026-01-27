@@ -2,3 +2,12 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
+@plugin "@tailwindcss/typography";
+@import "tailwind-animations";
+
+@theme {
+    --color-acero: #4a5568;
+    --color-niebla: #a1a1a1;
+    --color-ambar: #ffbf00;
+    --color-atardecer: #d47a3b;
+}
