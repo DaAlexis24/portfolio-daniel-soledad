@@ -4,7 +4,7 @@ import menus from '../collections/menu.json'
 import Button from './ui/Button.astro'
 ---
 
-<nav class="flex flex-row-reverse justify-start w-full text-sm sm:justify-end text-neutral-500 dark:text-neutral-400 sm:flex-row sm:items-center">
+<nav class="flex flex-row-reverse justify-start w-full text-sm sm:justify-end text-light-black dark:text-neutral-500 sm:flex-row sm:items-center">
     <!-- Mobile Menu Toggle Buttons -->
     <div class="flex items-center gap-2 sm:hidden">
     <!-- Dark Mode Toggle (Mobile) -->
@@ -20,7 +20,7 @@ import Button from './ui/Button.astro'
         <!-- Hamburger Menu Button -->
         <div id="openMenu" class="flex items-center justify-center w-10 h-10 cursor-pointer transition-transform duration-200 active:scale-90">
             <svg
-            class="w-7 h-7 text-red-700 dark:text-neutral-200"
+            class="w-7 h-7 text-[#2d6dc3] dark:text-neutral-200"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -63,7 +63,7 @@ import Button from './ui/Button.astro'
               return (
                 <a
                   href={menu.url}
-                  class="relative flex items-center justify-center w-full sm:w-auto px-5 py-2.5 sm:py-2 sm:px-3 md:px-4 font-medium tracking-wide text-center duration-200 ease-out rounded-lg sm:rounded-none text-white dark:text-neutral-200   hover:text-primary sm:hover:bg-transparent dark:hover:text-white dark:hover:bg-neutral-800/50 sm:dark:hover:bg-transparent active:scale-[0.98] sm:active:scale-100 transition-all"
+                  class="relative flex items-center justify-center w-full sm:w-auto px-5 py-2.5 sm:py-2 sm:px-3 md:px-4 font-medium tracking-wide text-center duration-200 ease-out rounded-lg sm:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue sm:hover:bg-plomo dark:hover:text-white dark:hover:bg-neutral-800/50 sm:dark:hover:bg-transparent active:scale-[0.98] sm:active:scale-100 transition-all"
                 >
                   {menu.item}
                 </a>
@@ -75,7 +75,7 @@ import Button from './ui/Button.astro'
         <!-- Contact Button (Mobile) -->
         <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
           <Button url="javascript:void(0);" type="fill" className="m-auto w-full justify-center ">
-            Resume <Download size={16} />
+            Mi CV <Download size={16} />
           </Button>
         </div>
       </div>
@@ -84,7 +84,7 @@ import Button from './ui/Button.astro'
       <div class="relative hidden sm:flex items-center gap-2 ml-4 lg:ml-6">
         <!-- Contact Button (Desktop) -->
         <Button url="javascript:void(0);" type="fill" className="md:flex mx-1">
-          Resume <Download size={16} />
+          Mi CV <Download size={16} />
         </Button>
 
         <span class="separator-line  hidden sm:inline-block bg-[rgba(183,202,255,0.5)] mt-5 -translate-y-1/2 w-px h-5"></span>
@@ -143,7 +143,7 @@ import Button from './ui/Button.astro'
       transform: translateX(-50%) scaleX(0);
       width: 70%;
       height: 2px;
-      background: var(--color-primary);
+      background: var(--color-dark-blue);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 2px;
     }
@@ -156,7 +156,7 @@ import Button from './ui/Button.astro'
   /* Mobile menu item click feedback */
   @media (max-width: 639px) {
     nav a:active {
-      background-color: var(--color-neutral-100);
+      background-color: var(--color-light-blue);
     }
 
     .dark nav a:active {
@@ -238,6 +238,7 @@ import Button from './ui/Button.astro'
     }
   }
 </style>
+
 <script>
     declare global {
         interface Window {
@@ -248,20 +249,94 @@ import Button from './ui/Button.astro'
     const darkToggleMobile = document.getElementById('darkToggleMobile');
 
     function syncDarkModeIcons() {
-    const isDark = document.documentElement.classList.contains('dark');
-    const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
-    const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
-
-    if (isDark) {
-      moonIcons.forEach(icon => icon.classList.remove('hidden'));
-      sunIcons.forEach(icon => icon.classList.add('hidden'));
-      document.getElementById('dayText')?.classList.add('hidden');
-      document.getElementById('nightText')?.classList.remove('hidden');
-    } else {
-      sunIcons.forEach(icon => icon.classList.remove('hidden'));
-      moonIcons.forEach(icon => icon.classList.add('hidden'));
-      document.getElementById('dayText')?.classList.remove('hidden');
-      document.getElementById('nightText')?.classList.add('hidden');
+        const isDark = document.documentElement.classList.contains('dark');
+        const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
+        const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
+        
+        if (isDark) {
+            moonIcons.forEach(icon => icon.classList.remove('hidden'));
+            sunIcons.forEach(icon => icon.classList.add('hidden'));
+            document.getElementById('dayText')?.classList.add('hidden');
+            document.getElementById('nightText')?.classList.remove('hidden');
+        } else {
+            sunIcons.forEach(icon => icon.classList.remove('hidden'));
+            moonIcons.forEach(icon => icon.classList.add('hidden'));
+            document.getElementById('dayText')?.classList.remove('hidden');
+            document.getElementById('nightText')?.classList.add('hidden');
+        }
     }
+    // Sync on initialization
+  document.addEventListener('DOMContentLoaded', syncDarkModeIcons);
+
+  // Listen for dark mode changes
+  const observer = new MutationObserver(syncDarkModeIcons);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+  // Mobile dark mode toggle
+  darkToggleMobile?.addEventListener('click', () => {
+    darkToggle?.click();
+  });
+
+  // Optimize mobile menu open/close
+  const openMenu = document.getElementById('openMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  const menu = document.getElementById('menu');
+  const mobileMenuBackground = document.getElementById('mobileMenuBackground');
+  let isMobileMenuOpen = false;
+
+  // Mobile menu open function
+  function openMobileMenu() {
+    menu?.classList.remove('hidden');
+    mobileMenuBackground?.classList.remove('hidden');
+    openMenu?.classList.add('hidden');
+    closeMenu?.classList.remove('hidden');
+    closeMenu?.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    isMobileMenuOpen = true;
   }
+
+  // Mobile menu close function
+  function closeMobileMenu() {
+    menu?.classList.add('hidden');
+    mobileMenuBackground?.classList.add('hidden');
+    closeMenu?.classList.add('hidden');
+    closeMenu?.classList.remove('flex');
+    openMenu?.classList.remove('hidden');
+    document.body.style.overflow = ''; // Restore scrolling
+    isMobileMenuOpen = false;
+  }
+
+  // Click hamburger button to open menu
+  openMenu?.addEventListener('click', openMobileMenu);
+
+  // Click close button to close menu
+  closeMenu?.addEventListener('click', closeMobileMenu);
+
+  // Click background to close menu
+  mobileMenuBackground?.addEventListener('click', closeMobileMenu);
+
+  // Add click-to-close functionality for mobile menu items
+  const menuLinks = menu?.querySelectorAll('a');
+  menuLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      // Check if in mobile view
+      if (window.innerWidth < 640) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 640) {
+      // If resizing from mobile to desktop, close the menu
+      closeMobileMenu();
+    }
+  });
+
+  // Add to global scope so inline events can call it
+  window.closeMobileMenu = closeMobileMenu;
 </script>
