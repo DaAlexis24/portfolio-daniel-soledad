@@ -7,8 +7,8 @@ import Button from './ui/Button.astro'
 <header class="sticky top-0 z-50 bg-linear-to-r from-light-gray via-light-blue to-light-gray backdrop-blur-md shadow-2xl shadow-shadow-header dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:shadow-gray-600">
     <div class="relative mx-auto flex items-center justify-between px-4 max-w-5xl h-15 md:gap-x-4">
         <div class="h-18 bg-linear-to-r from-light-gray via-light-blue to-light-gray my-auto px-8 rounded-b-2xl shadow-xs shadow-gray-400 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:shadow-gray-600">
-            <div class="h-25 flex justify-center items-center bg-linear-to-r from-light-gray via-light-blue to-light-gray p-8 rounded-lg shadow-2xl shadow-gray-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:shadow-orange-600">
-                <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-orange-600">
+            <div class="h-25 flex justify-center items-center bg-linear-to-r from-light-gray via-light-blue to-light-gray p-8 rounded-lg shadow-2xl shadow-gray-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:shadow-red-600">
+                <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-red-700">
                     <a href="/">
                         <img src="logo.webp" alt="DS Logo" class="animate-fade-in-down"/>
                     </a>
@@ -74,7 +74,8 @@ import Button from './ui/Button.astro'
 
                 <!-- Contact Button (Mobile) -->
                 <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
-                    <Button url="javascript:void(0);" type="fill" className="m-auto w-full justify-center ">Mi CV <Download size={16} />
+                    <Button url="/cv.pdf" download="Daniel-Soledad-CV.pdf" type="fill" className="m-auto w-full justify-center">
+                        Mi CV <Download size={16} />
                     </Button>
                 </div>
             </div>
