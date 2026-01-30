@@ -15,11 +15,12 @@
     --color-plomo: #e0e0e0;
     --color-bright-blue: #004085;
     --color-sea-blue: #002b5c;
+    --color-radiant: #e7fcc0;
     --color-shadow-header: rgba(0 2px 4px rgba(0, 0, 0, 0.1));
 
     /* Dark colors */
     --color-acero: #4a5568;
     --color-niebla: #a1a1a1;
-    --color-ambar: #ffbf00;
     --color-atardecer: #d47a3b;
+    --color-dire: #e7000b;
 }
