@@ -1,37 +1,65 @@
+---
+import { siteInfo, socialLinks } from "../config/info";
+---
+
 <footer class="p-4 bg-linear-65 from-radiant via-blue-100 to-radiant md:p-8 lg:p-10 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900">
   <section class="mx-auto max-w-7xl flex justify-between items-center">
-    <section class="flex items-center gap-2">
+    <div class="flex items-center gap-2">
         <a href="/" class="flex justify-center items-center">
             <img src="logo.webp" alt="DS" class="w-10 h-10 hover:animate-heartbeat"/>
         </a>
-        <span class="separator-line hidden sm:inline-block bg-[rgba(183,202,255,0.5)] mt-5 -translate-y-1/2 w-px h-5"></span>
-        <span class="text-sm text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear() } <a href="#" class="hover:underline">Daniel Soledad</a>. All Rights Reserved.</span>
-    </section>
-    <section>
-        <ul class="flex flex-wrap justify-center items-center text-gray-900 dark:text-white">
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
-          </li>
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">Premium</a>
-          </li>
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6 ">Campaigns</a>
-          </li>
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">Blog</a>
-          </li>
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">Affiliate Program</a>
-          </li>
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>
-          </li>
-          <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
-          </li>
-      </ul>
-    </section>
+        <span class="separator-line hidden sm:inline-block bg-light-black dark:bg-neutral-200 mt-5 -translate-y-1/2 w-px h-5"></span>
+        <span class="text-sm text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear()} 
+            <a href={siteInfo.url || " "} class="hover:underline">{siteInfo.author || " "}</a>
+        </span>
+    </div>
+    <div class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
+        {socialLinks.map((social)=> (
+            <a href={social.url} target="_blank" class="social-icon-link" title={social.site}>
+                <div class="social-icon text-light-black dark:text-neutral-200">
+                    <Fragment set:html={social.icon} />
+                </div>
+            </a>
+        ))}
+    </div>
   </section>
 </footer>
+
+<style is:global>
+    .social-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+    }
+
+    .social-icon svg{
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .social-icon-link:hover .social-icon svg{
+        width: auto;
+        height: 24px;
+        fill: currentColor;
+    }
+
+    .social-icon-link:hover .ic-linkedin {
+    color: #1DA1F2;
+  }
+
+  .social-icon-link:hover .ic-github {
+    color: #333;
+  }
+
+   .dark .social-icon-link:hover .ic-github {
+    color: #fff;
+  }
+</style>
+
 
