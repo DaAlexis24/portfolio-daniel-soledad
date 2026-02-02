@@ -1,3 +1,9 @@
+/* Fonts imports */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,500;1,8..144,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap");
+
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
@@ -21,6 +27,11 @@
     /* Dark colors */
     --color-acero: #4a5568;
     --color-niebla: #a1a1a1;
-    --color-atardecer: #d47a3b;
     --color-dire: #e7000b;
+
+    /* Font Themes */
+    --font-rubik: "Rubik", sans-serif; /*Párrafos*/
+    --font-cinzel: "Cinzel", serif; /*Encabezados*/
+    --font-robot: "Roboto Serif", serif; /*Menús*/
+    --font-montserrat: "Montserrat", sans-serif; /*Botones*/
 }
