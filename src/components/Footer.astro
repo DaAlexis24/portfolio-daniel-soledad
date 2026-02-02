@@ -3,14 +3,14 @@ import { siteInfo, socialLinks } from "../config/info";
 ---
 
 <footer class="p-4 bg-linear-65 from-radiant via-blue-100 to-radiant md:p-8 lg:p-10 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900">
-  <section class="mx-auto max-w-7xl flex justify-between items-center">
-    <div class="flex items-center gap-2">
+  <section class="container mx-auto max-w-7xl flex flex-col justify-between items-center sm:flex-row">
+    <div class="flex flex-col sm:flex-row items-center gap-2">
         <a href="/" class="flex justify-center items-center">
             <img src="logo.webp" alt="DS" class="w-10 h-10 hover:animate-heartbeat"/>
         </a>
         <span class="separator-line hidden sm:inline-block bg-light-black dark:bg-neutral-200 mt-5 -translate-y-1/2 w-px h-5"></span>
-        <span class="text-sm text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear()} 
-            <a href={siteInfo.url || " "} class="hover:underline">{siteInfo.author || " "}</a>
+        <span class="text-sm font-rubik text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear()} 
+            <a href={siteInfo.url || " "}>{siteInfo.author || " "}</a>
         </span>
     </div>
     <div class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
