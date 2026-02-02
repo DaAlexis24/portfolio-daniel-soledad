@@ -8,7 +8,7 @@ import Button from './ui/Button.astro'
     <div class="relative mx-auto flex items-center justify-between px-4 max-w-5xl h-15 md:gap-x-4">
         <div class="h-18 bg-linear-to-r from-radiant via-light-blue to-radiant my-auto px-8 rounded-b-2xl shadow-xs shadow-gray-400 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
             <div class="h-25 flex justify-center items-center bg-linear-65 from-radiant via-light-blue to-radiant p-8 rounded-lg shadow-2xl shadow-gray-600 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-red-600">
-                <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-red-700">
+                <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-orange-700">
                     <a href="/">
                         <img src="logo.webp" alt="DS Logo" class="animate-fade-in-down"/>
                     </a>
@@ -17,12 +17,12 @@ import Button from './ui/Button.astro'
         </div>
 
         <!-- Navigation -->
-        <nav class="flex flex-row-reverse justify-start w-full text-sm sm:justify-end text-light-black dark:text-neutral-500 sm:flex-row sm:items-center">
+        <nav class="flex flex-row-reverse justify-start w-full text-sm sm:justify-end sm:flex-row sm:items-center">
             <!-- Mobile Menu Toggle Buttons -->
             <div class="flex items-center gap-2 sm:hidden">
                 <!-- Dark Mode Toggle (Mobile) -->
                 <div id="darkToggleMobile" class="flex items-center justify-center w-10 h-10 cursor-pointer rounded-full bg-linear-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-transform duration-200 active:scale-95">
-                    <div class="flex justify-center items-center w-6 h-6 relative overflow-hidden rounded-full bg-[#7fa1ff]  bg-linear-to-b from-[#85a6ff] to-[#2d6dc3] border-[0.5px] border-[#7fa1ff] dark:from-dire dark:to-red-500 dark:border-red-800" style="box-shadow: 0px 2px 3px 0 rgba(55,52,209,0.21);">
+                    <div class="flex justify-center items-center w-6 h-6 relative overflow-hidden rounded-full bg-[#7fa1ff] bg-linear-to-b from-light-blue to-dark-blue border-[0.5px] border-[#7fa1ff] dark:from-dire dark:to-red-500 dark:border-red-800" style="box-shadow: 0px 2px 3px 0 rgba(55,52,209,0.21);">
                         <SunMedium class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-sun" /> 
                         <Moon class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-moon" />
                     </div>
@@ -50,7 +50,7 @@ import Button from './ui/Button.astro'
             <div id="menu" class="fixed top-17 sm:top-0 left-3 right-3 sm:left-0 sm:right-0 ease-out duration-300 z-40 flex-col items-center justify-start hidden w-auto h-auto text-sm pt-6 pb-5 sm:py-0 sm:relative sm:flex-row sm:flex">
                 <!-- Mobile Menu Background -->
                 <div class="absolute inset-0 top-0 right-0 block w-full h-full sm:hidden">
-                    <div class="relative w-full h-full bg-white/95 border border-dashed border-neutral-300 dark:border-neutral-700 backdrop-blur-md rounded-2xl dark:bg-neutral-950/95 shadow-lg">
+                    <div class="relative w-full h-full bg-light-blue border border-dashed border-neutral-300 dark:border-neutral-700 backdrop-blur-md rounded-2xl dark:bg-gray-900/85 shadow-lg">
                     </div>
                 </div>
 
@@ -59,14 +59,14 @@ import Button from './ui/Button.astro'
                     {
                         menus.map((menu) => {
                             return (
-                            <a href={menu.url} class="relative flex items-center justify-center w-full sm:w-auto px-5 py-2.5 sm:py-2 sm:px-3 md:px-4 font-medium tracking-wide text-center duration-200 ease-out rounded-lg sm:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue sm:hover:bg-transparent dark:hover:text-white dark:hover:bg-neutral-800/50 sm:dark:hover:bg-transparent active:scale-[0.98] sm:active:scale-100 transition-all">{menu.item}</a>
+                            <a href={menu.url} class="relative flex items-center justify-center w-full sm:w-auto px-5 py-2.5 sm:py-2 sm:px-3 md:px-4 font-roboto tracking-wide text-center duration-200 ease-out rounded-lg sm:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue sm:hover:bg-transparent dark:hover:text-white dark:hover:bg-neutral-800/50 sm:dark:hover:bg-transparent active:scale-[0.98] sm:active:scale-100 transition-all">{menu.item}</a>
                             )
                         })
                     }
                 </div>
 
                 <!-- Contact Button (Mobile) -->
-                <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
+                <div class="relative z-10 w-full px-5 mt-3 sm:hidden text-white">
                     <Button url="/cv.pdf" download="Daniel-Soledad-CV.pdf" type="fill" className="m-auto w-full justify-center">
                         Mi CV <Download size={16} />
                     </Button>
@@ -88,9 +88,9 @@ import Button from './ui/Button.astro'
                         <SunMedium id="sun" class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease" />
                         <Moon class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease" id="moon" />
                     </div>
-                    <span class="hidden sm:inline-block whitespace-nowrap">
-                        <span id="dayText" class="shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Light</span>
-                        <span id="nightText" class="hidden shrink-0 text-sm text-left text-[#6f6c8f] dark:text-red-500">Dark</span>
+                    <span class="hidden sm:inline-block whitespace-nowrap font-montserrat">
+                        <span id="dayText" class="shrink-0 text-sm text-left text-light-black dark:text-neutral-400">Light</span>
+                        <span id="nightText" class="hidden shrink-0 text-sm text-left text-[#6f6c8f] dark:text-white">Dark</span>
                     </span>
                 </div>
             </div>
