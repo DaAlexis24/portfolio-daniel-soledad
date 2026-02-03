@@ -34,4 +34,7 @@
     --font-cinzel: "Cinzel", serif; /*Encabezados*/
     --font-roboto: "Roboto Serif", serif; /*Menús*/
     --font-montserrat: "Montserrat", sans-serif; /*Botones*/
+
+    /* Breakpoint personalizado */
+    --breakpoint-tablet: 49rem;
 }
