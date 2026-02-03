@@ -9,7 +9,12 @@
 npm create astro@latest -- --template basics
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Lighthouse Issues
+
+### Improve Image Delivery
+
+Tenía problemas a la hora de actualizar la web ya que mis imágenes pesaban mucho y no renderizaban bien
+
 
 ## 🚀 Project Structure
 
