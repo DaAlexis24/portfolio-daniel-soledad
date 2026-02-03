@@ -2,6 +2,7 @@
 import { Download, Moon, SunMedium } from "@lucide/astro"
 import menus from '../collections/menu.json'
 import Button from './ui/Button.astro'
+import Logo from "../assets/Logo.astro"
 ---
 
 <header class="sticky top-0 z-50 bg-linear-65 from-radiant via-blue-100 to-radiant backdrop-blur-md shadow-2xl shadow-shadow-header dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
@@ -10,7 +11,8 @@ import Button from './ui/Button.astro'
             <div class="h-25 flex justify-center items-center bg-linear-65 from-radiant via-light-blue to-radiant p-8 rounded-lg shadow-2xl shadow-gray-600 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-red-600">
                 <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-orange-700">
                     <a href="/">
-                        <img src="logo.webp" alt="DS Logo" class="animate-fade-in-down"/>
+                        <!-- <img src="logo.webp" alt="DS Logo" class="animate-fade-in-down"/> -->
+                        <Logo />
                     </a>
                 </div>
             </div>
