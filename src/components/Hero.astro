@@ -11,7 +11,7 @@ import Button from './ui/Button.astro';
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold text-dark-blue leading-none md:text-5xl xl:text-6xl dark:text-dire font-cinzel">{hero.title}</h1>
             <p class="max-w-2xl mb-6 font-rubik text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-neutral-200">{hero.presentation}</p>
             <div class="inline-flex justify-center items-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
-                <Button type='fill'>
+                <Button type='solid'>
                     Contácteme
                 </Button>
                 {socialLinks.map((social)=> (
@@ -24,7 +24,6 @@ import Button from './ui/Button.astro';
             </div>
         </div>
         <div class="mt-0 col-span-5">
-            <!-- <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" alt="mockup"> -->
             <MyPhoto />
         </div>                
     </div>
