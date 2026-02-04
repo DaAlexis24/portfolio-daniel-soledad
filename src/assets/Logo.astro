@@ -10,6 +10,4 @@ interface Props {
 
 const { class: className, width, height } = Astro.props;
 ---
-<!-- <Image src={logo} alt="DS Logo" class={"animate-fade-in-down"} layout="constrained" /> -->
-
-<Image src={logo} alt="DS Logo" class={className} layout="constrained" width={width} height={height} />
+<Image src={logo} alt="DS Logo" class={className} layout="constrained" width={width} height={height} fetchpriority="high" loading=eager />
