@@ -16,14 +16,14 @@ const {title, description, keywords} = Astro.props
 <html lang="es">
 	<head>
 		<Meta title={title} description={description} keywords={keywords}/>
-        <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 	</head>
 	<body>
-    <div class="grid grid-rows-[auto_1fr_auto] min-h-dvh overflow-x-hidden">
-      <Header />
-      <slot />
-      <Footer />
-    </div>
+	<div class="grid grid-rows-[auto_1fr_auto] min-h-dvh overflow-x-hidden">
+	  <Header />
+	  <slot />
+	  <Footer />
+	</div>
+	<script defer src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 	</body>
 </html>
 
