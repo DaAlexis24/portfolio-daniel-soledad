@@ -1,7 +1,15 @@
 ---
 import {Image} from 'astro:assets'
 import logo from './images/logo.webp'
+
+interface Props {
+    class?: string;
+    width: number;
+    height: number;
+}
+
+const { class: className, width, height } = Astro.props;
 ---
 <!-- <Image src={logo} alt="DS Logo" class={"animate-fade-in-down"} layout="constrained" /> -->
 
-<Image src={logo} alt="DS Logo" class={"animate-fade-in-down"} layout="constrained" width={64} height={64} />
+<Image src={logo} alt="DS Logo" class={className} layout="constrained" width={width} height={height} />
