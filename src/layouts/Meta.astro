@@ -1,0 +1,36 @@
+---
+import { siteInfo } from "../config/info";
+
+export interface Props {
+    title?: string;
+    description?: string;
+    keywords?: string;
+    url?: string;
+    ogImage?: string;
+}
+
+const {
+    title,
+    description,
+    keywords = "",
+    url = siteInfo.url,
+    ogImage = "/og.jpg"
+} = Astro.props
+---
+<!-- Meta Tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.webp" />
+<meta name="generator" content={Astro.generator} />
+<meta name="description" content={description}>
+<meta name="keywords" content={keywords}>
+<meta name="author" content={siteInfo.author}>
+<title>{title}</title>
+
+<!-- OpenGraph tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={title} />

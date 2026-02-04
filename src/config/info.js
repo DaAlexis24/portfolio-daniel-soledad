@@ -7,9 +7,9 @@ export const siteInfo = {
     mail: "danielalsole24@gmail.com",
     resume: "cv.pdf",
     meta: {
-        title: "Daniel Soledad Portfolio",
+        title: "Daniel Soledad | FullStack Developer",
         description:
-            "Mi nombre es Daniel. Soy un desarrollador en multiplataformas y web que esta ansioso de poder demostrar sus conocimientos siendo parte de proyectos ambiciosos. A día de hoy estoy reforzando conocimientos y trabajando en proyectos personales y para mis seres queridos",
+            "Portafolio Web de Daniel Soledad, graduado en desarrollo de aplicaciones en multiplataformas y web",
         keywords:
             "web designer, portfolio, fullstack developer, design, code, personal website, mern",
         image: `${SITE_URL}/og.jpg`,
