@@ -1,4 +1,5 @@
 ---
+import Logo from "../assets/Logo.astro";
 import { siteInfo, socialLinks } from "../config/info";
 ---
 
@@ -6,7 +7,7 @@ import { siteInfo, socialLinks } from "../config/info";
   <section class="container mx-auto max-w-7xl flex flex-col justify-between items-center sm:flex-row">
     <div class="flex flex-col sm:flex-row items-center gap-2">
         <a href="/" class="flex justify-center items-center">
-            <img src="logo.webp" alt="DS" class="w-10 h-10 hover:animate-heartbeat"/>
+            <Logo class={"hover:animate-heartbeat"} width={30} height={30} />
         </a>
         <span class="separator-line hidden sm:inline-block bg-light-black dark:bg-neutral-200 mt-5 -translate-y-1/2 w-px h-5"></span>
         <span class="text-sm font-rubik text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear()} 
