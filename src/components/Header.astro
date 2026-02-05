@@ -5,7 +5,7 @@ import Button from './ui/Button.astro'
 import Logo from "../assets/Logo.astro"
 ---
 
-<header class="sticky top-0 z-50 bg-linear-65 from-radiant via-blue-100 to-radiant backdrop-blur-md shadow-2xl shadow-shadow-header dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
+<header role="banner" class="sticky top-0 z-50 bg-linear-65 from-radiant via-blue-100 to-radiant backdrop-blur-md shadow-2xl shadow-shadow-header dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
     <div class="relative mx-auto flex items-center justify-between px-4 max-w-5xl h-15 md:gap-x-4">
         <div class="h-18 bg-linear-to-r from-radiant via-light-blue to-radiant my-auto px-8 rounded-b-2xl shadow-xs shadow-gray-400 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
             <div class="h-25 flex justify-center items-center bg-linear-65 from-radiant via-light-blue to-radiant p-8 rounded-lg shadow-2xl shadow-gray-600 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-red-600">
@@ -18,7 +18,7 @@ import Logo from "../assets/Logo.astro"
         </div>
 
         <!-- Navigation -->
-        <nav class="flex flex-row-reverse justify-start w-full text-sm tablet:justify-end tablet:flex-row tablet:items-center">
+        <nav class="flex flex-row-reverse justify-start w-full text-sm tablet:justify-end tablet:flex-row tablet:items-center" role="navigation">
             <!-- Mobile Menu Toggle Buttons -->
             <div class="flex items-center gap-2 tablet:hidden">
                 <!-- Dark Mode Toggle (Mobile) -->
