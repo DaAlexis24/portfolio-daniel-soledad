@@ -15,7 +15,7 @@ import Button from './ui/Button.astro';
                     Contácteme
                 </Button>
                 {socialLinks.map((social)=> (
-                    <a href={social.url} target="_blank" title={social.site}>
+                    <a href={social.url} target="_blank"  rel="noopener noreferrer" title={social.site}>
                         <div class="icons text-bright-blue dark:text-orange-700">
                             <Fragment set:html={social.icon} />
                         </div>
