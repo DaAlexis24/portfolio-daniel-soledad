@@ -11,6 +11,10 @@ export default defineConfig({
         plugins: [tailwindcss()],
         build: {
             minify: "terser",
+            cssCodeSplit: true, // Separa CSS por página
+        },
+        ssr: {
+            external: ["flowbite"], // Evita procesamiento innecesario
         },
     },
 

@@ -3,6 +3,7 @@ import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Meta from './Meta.astro';
 import '../styles/global.css'
+import 'flowbite'
 
 interface Props {
     title: string | undefined;
@@ -23,7 +24,7 @@ const {title, description, keywords} = Astro.props
 	  <slot />
 	  <Footer />
 	</div>
-	<script defer src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+	<!-- <script defer src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script> -->
 	</body>
 </html>
 

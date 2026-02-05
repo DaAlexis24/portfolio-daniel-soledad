@@ -3,4 +3,5 @@ import { Image } from "astro:assets";
 import photo from './images/abbadon.webp'
 ---
 
-<Image src={photo} alt="Soy Daniel Soledad" layout="constrained" width={380} height={284} fetchpriority="high" loading="eager" />
+<Image src={photo} alt="Soy Daniel Soledad" width={256} height={256} priority
+  densities={[1.5, 2]} />

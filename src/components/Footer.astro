@@ -16,7 +16,7 @@ import { siteInfo, socialLinks } from "../config/info";
     </div>
     <div class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
         {socialLinks.map((social)=> (
-            <a href={social.url} target="_blank" class="social-icon-link" title={social.site}>
+            <a href={social.url} target="_blank" class="social-icon-link" rel="noopener noreferrer" title={social.site}>
                 <div class="social-icon text-light-black dark:text-neutral-200">
                     <Fragment set:html={social.icon} />
                 </div>

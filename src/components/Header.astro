@@ -60,7 +60,7 @@ import Logo from "../assets/Logo.astro"
                     {
                         menus.map((menu) => {
                             return (
-                            <a href={menu.url} class="relative flex items-center justify-center w-full tablet:w-auto px-5 py-2.5 tablet:py-2 tablet:px-3 md:px-4 font-roboto tracking-wide text-center duration-200 ease-out rounded-lg tablet:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue tablet:hover:bg-transparent dark:hover:text-white dark:hover:bg-neutral-800/50 tablet:dark:hover:bg-transparent active:scale-[0.98] tablet:active:scale-100 transition-all">{menu.item}</a>
+                            <a href={menu.url} class="relative flex items-center justify-center w-full tablet:w-auto px-5 py-2.5 tablet:py-2 tablet:px-3 md:px-4 font-roboto tracking-wide text-center duration-200 ease-out rounded-lg tablet:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue tablet:hover:bg-transparent dark:hover:text-white dark:hover:bg-neutral-800/50 tablet:dark:hover:bg-transparent active:scale-[0.98] tablet:active:scale-100 transition-all" rel="noopener noreferrer">{menu.item}</a>
                             )
                         })
                     }
@@ -235,7 +235,7 @@ import Logo from "../assets/Logo.astro"
   }
 </style>
 
-<script>
+<!-- <script>
     declare global {
         interface Window {
             closeMobileMenu: () => void
@@ -347,4 +347,78 @@ import Logo from "../assets/Logo.astro"
 
   // Add to global scope so inline events can call it
   window.closeMobileMenu = closeMobileMenu;
+</script> -->
+
+<script is:inline>
+    // Solo ejecuta en cliente, sin procesamiento de Astro
+    const darkToggle = document.getElementById('darkToggle');
+    const darkToggleMobile = document.getElementById('darkToggleMobile');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const menu = document.getElementById('menu');
+    let isMobileMenuOpen = false;
+
+    function syncDarkModeIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
+        const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
+        
+        if (isDark) {
+            moonIcons.forEach(icon => icon.classList.remove('hidden'));
+            sunIcons.forEach(icon => icon.classList.add('hidden'));
+            document.getElementById('dayText')?.classList.add('hidden');
+            document.getElementById('nightText')?.classList.remove('hidden');
+        } else {
+            sunIcons.forEach(icon => icon.classList.remove('hidden'));
+            moonIcons.forEach(icon => icon.classList.add('hidden'));
+            document.getElementById('dayText')?.classList.remove('hidden');
+            document.getElementById('nightText')?.classList.add('hidden');
+        }
+    }
+
+    function toggleDarkMode() {
+        const html = document.documentElement;
+        html.classList.toggle('dark');
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        syncDarkModeIcons();
+    }
+
+    function openMobileMenu() {
+        menu?.classList.remove('hidden');
+        openMenu?.classList.add('hidden');
+        closeMenu?.classList.remove('hidden', 'flex');
+        closeMenu?.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        isMobileMenuOpen = true;
+    }
+
+    function closeMobileMenu() {
+        menu?.classList.add('hidden');
+        closeMenu?.classList.add('hidden');
+        closeMenu?.classList.remove('flex');
+        openMenu?.classList.remove('hidden');
+        document.body.style.overflow = '';
+        isMobileMenuOpen = false;
+    }
+
+    // Event listeners
+    darkToggle?.addEventListener('click', toggleDarkMode);
+    darkToggleMobile?.addEventListener('click', toggleDarkMode);
+    openMenu?.addEventListener('click', openMobileMenu);
+    closeMenu?.addEventListener('click', closeMobileMenu);
+
+    // Menu links close on mobile
+    menu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 640) closeMobileMenu();
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 640) closeMobileMenu();
+    });
+
+    // Inicialización
+    syncDarkModeIcons();
+    window.closeMobileMenu = closeMobileMenu;
 </script>
