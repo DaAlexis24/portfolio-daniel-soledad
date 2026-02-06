@@ -10,7 +10,6 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
         build: {
-            minify: "terser",
             cssCodeSplit: true, // Separa CSS por página
         },
         ssr: {
