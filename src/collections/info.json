@@ -1,7 +1,7 @@
 {
     "hero": {
-        "title": "Hi. I'm Daniel...",
-        "profession": "Desarrollador Multiplataforma y Web",
+        "title": "Daniel!",
+        "professions": ["Desarrollador Multiplataforma", "Desarrollador Web"],
         "abstract": "Enfocado en generar soluciones tecnológicas para problemas reales, adaptándome a las necesidades del cliente. ¿Tienes algún proyecto en mente? Hagamos que suceda"
     }
 }

@@ -5,15 +5,19 @@ import { socialLinks } from '../config/info';
 import Button from './ui/Button.astro';
 import { UserSearchIcon } from '@lucide/astro';
 
-const {title, profession, abstract} = hero;
+const {title, professions, abstract} = hero;
 ---
 
 <section class="mt-15 justify-center tablet:mt-20" role="presentation">
     <div class="grid grid-cols-1 max-w-7xl px-6 py-8 mx-auto sm:grid-cols-[1fr_auto] tablet:grid-cols-[2fr_1fr]">
         <div class="flex flex-col gap-6 max-w-sm mx-auto text-center items-center justify-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-xl lg:max-w-2xl">
             <hgroup>
-                <h1 class="text-4xl text-dark-blue tablet:text-6xl dark:text-dire font-cinzel">{title}</h1>
-                <p class="font-rubik font-semibold text-acero tablet:text-xl dark:text-light-gray">{profession}</p>
+                <h1 class="text-4xl text-dark-blue tablet:text-6xl dark:text-dire font-cinzel">Hi, I'm <span>{title}</span></h1>
+                <div class="text-decorative">
+                    {professions.map((profession) => (
+                        <p class="font-rubik font-semibold text-acero tablet:text-xl dark:text-light-gray">{profession}</p>
+                    ))}
+                </div>
             </hgroup>
             <p class="font-rubik text-gray-500 tablet:text-lg dark:text-neutral-200">{abstract}</p>
             <div class="inline-flex justify-center items-center space-x-5 overflow-hidden">
@@ -52,5 +56,26 @@ const {title, profession, abstract} = hero;
     p {
         content-visibility: auto;
         font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .text-decorative{
+        --height: 1.875rem;
+        height: var(--height);
+        line-height: var(--height);
+
+        overflow: hidden;
+    }
+
+    .text-decorative p{
+        animation: slide-up 6s infinite;
+    }
+
+    @keyframes slide-up {
+        0%, 50% {
+            transform: translateY(0%);
+        }
+        55%, 95% {
+            transform: translateY(-100%);
+        }
     }
 </style>
