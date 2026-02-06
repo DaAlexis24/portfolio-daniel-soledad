@@ -3,27 +3,30 @@ import MyPhoto from '../assets/MyPhoto.astro';
 import {hero} from '../collections/info.json'
 import { socialLinks } from '../config/info';
 import Button from './ui/Button.astro';
+import { UserSearchIcon } from '@lucide/astro';
+
+const {title, presentation} = hero;
 ---
 
-<section class="mt-15" role="presentation">
-    <div class="grid grid-cols-1 max-w-7xl px-4 py-8 mx-auto sm:grid-rows-1 lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div class="mx-auto lg:col-span-7 text-center items-center sm:mr-auto sm:text-left sm:items-left">
-            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold text-dark-blue leading-none md:text-5xl xl:text-6xl dark:text-dire font-cinzel">{hero.title}</h1>
-            <p class="max-w-2xl mb-6 font-rubik text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-neutral-200">{hero.presentation}</p>
-            <div class="inline-flex justify-center items-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
-                <Button type='solid'>
-                    Contácteme
+<section class="mt-15 justify-center" role="presentation">
+    <div class="grid grid-cols-1 max-w-7xl px-6 py-8 mx-auto sm:grid-cols-[1fr_auto] tablet:grid-cols-[2fr_1fr]">
+        <div class="max-w-sm mx-auto text-center items-center justify-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-xl lg:max-w-2xl">
+            <h1 class="text-4xl text-dark-blue leading-none tablet:text-6xl dark:text-dire font-cinzel">{title}</h1>
+            <p class="font-rubik text-gray-500 my-8 tablet:text-lg dark:text-neutral-200">{presentation}</p>
+            <div class="inline-flex justify-center items-center space-x-5 overflow-hidden">
+                <Button type='solid' url='/contacto'>
+                    Mail Me <UserSearchIcon size={16}/>
                 </Button>
                 {socialLinks.map((social)=> (
                     <a href={social.url} target="_blank"  rel="noopener noreferrer" title={social.site}>
-                        <div class="icons text-bright-blue dark:text-orange-700">
+                        <div class="icons text-bright-blue dark:text-dire">
                             <Fragment set:html={social.icon} />
                         </div>
                     </a>
                 ))}
             </div>
         </div>
-        <div class="mt-0 col-span-5">
+        <div class="mt-0 flex justify-center items-center">
             <MyPhoto />
         </div>                
     </div>
@@ -42,5 +45,9 @@ import Button from './ui/Button.astro';
         width: 20px;
         height: 20px;
         fill: currentColor;
+    }
+    p {
+        content-visibility: auto;
+        font-family: system-ui, -apple-system, sans-serif;
     }
 </style>
