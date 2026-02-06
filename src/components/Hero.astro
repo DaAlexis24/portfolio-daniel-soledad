@@ -5,14 +5,17 @@ import { socialLinks } from '../config/info';
 import Button from './ui/Button.astro';
 import { UserSearchIcon } from '@lucide/astro';
 
-const {title, presentation} = hero;
+const {title, profession, abstract} = hero;
 ---
 
-<section class="mt-15 justify-center" role="presentation">
+<section class="mt-15 justify-center tablet:mt-20" role="presentation">
     <div class="grid grid-cols-1 max-w-7xl px-6 py-8 mx-auto sm:grid-cols-[1fr_auto] tablet:grid-cols-[2fr_1fr]">
-        <div class="max-w-sm mx-auto text-center items-center justify-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-xl lg:max-w-2xl">
-            <h1 class="text-4xl text-dark-blue leading-none tablet:text-6xl dark:text-dire font-cinzel">{title}</h1>
-            <p class="font-rubik text-gray-500 my-8 tablet:text-lg dark:text-neutral-200">{presentation}</p>
+        <div class="flex flex-col gap-6 max-w-sm mx-auto text-center items-center justify-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-xl lg:max-w-2xl">
+            <hgroup>
+                <h1 class="text-4xl text-dark-blue tablet:text-6xl dark:text-dire font-cinzel">{title}</h1>
+                <p class="font-rubik font-semibold text-acero tablet:text-xl dark:text-light-gray">{profession}</p>
+            </hgroup>
+            <p class="font-rubik text-gray-500 tablet:text-lg dark:text-neutral-200">{abstract}</p>
             <div class="inline-flex justify-center items-center space-x-5 overflow-hidden">
                 <Button type='solid' url='/contacto'>
                     Mail Me <UserSearchIcon size={16}/>
