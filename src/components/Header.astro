@@ -122,7 +122,7 @@ import Logo from "../assets/Logo.astro"
   }
 
   /* Desktop underline animation */
-  @media (min-width: 640px) {
+  @media (min-width: 783px) {
     nav a::after {
       content: '';
       position: absolute;
@@ -142,7 +142,7 @@ import Logo from "../assets/Logo.astro"
   }
 
   /* Desktop underline animation — Dark mode */
-  @media (min-width: 640px) {
+  @media (min-width: 783px) {
     :global(.dark) nav a::after {
       content: '';
       position: absolute;
@@ -164,7 +164,7 @@ import Logo from "../assets/Logo.astro"
   /* Mobile menu item click feedback */
   @media (max-width: 783px) {
     nav a:active {
-      background-color: var(--color-light-blue);
+      background-color: var(--color-bright-blue);
     }
 
     .dark nav a:active {
@@ -182,9 +182,6 @@ import Logo from "../assets/Logo.astro"
 
   /* Mobile menu background blur effect enhancement */
   @supports (backdrop-filter: blur(12px)) {
-    /* #mobileMenuBackground {
-      backdrop-filter: blur(12px);
-    } */
 
     @media (max-width: 783px) {
       #menu > div > div {
