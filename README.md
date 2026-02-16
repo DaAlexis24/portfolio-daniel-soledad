@@ -4,6 +4,10 @@
 
 - [Web_Rico](https://portfolio.ricoui.com/)
 - [GitHub_Repositorio](https://github.com/ricocc/ricoui-portfolio/blob/main/src/components/sections/Header.astro)
+- [Nexus](https://stvn-portfolio-template.vercel.app/)
+- [Brian_Collins](https://portfolio.tailwindtemplate.net/onedev/)
+- [Lautaro_Collins](https://lautaro-rodriguez-collins.vercel.app/)
+- [Flowbite_Docs](https://flowbite.com/docs/components/alerts/)
 
 ## Lighthouse Issues
 
