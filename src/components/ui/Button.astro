@@ -5,7 +5,7 @@ export interface Props {
 	className?: string; // Custom CSS classes
 	target?: "_blank" | "_self" | "_parent" | "_top"; // Link target, default is "_self"
 	size?: "xs" | "sm" | "md" | "lg" | "xl"; // Button size, optional, default is "md"
-    download?: string;
+    download?: string; // If we wanna give files
 }
 
 const { url, type = "solid", className = "", target = "_self", size = "md", download } = Astro.props;
