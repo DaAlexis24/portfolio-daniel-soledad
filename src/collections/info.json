@@ -3,5 +3,11 @@
         "title": "Daniel!",
         "professions": ["Desarrollador Multiplataforma", "Desarrollador Web"],
         "abstract": "Enfocado en generar soluciones tecnológicas para problemas reales, adaptándome a las necesidades del cliente. ¿Tienes algún proyecto en mente? Hagamos que suceda 🤝"
+    },
+    "about": {
+        "presentation": {
+            "title": "DSoledad",
+            "content": "Graduado del C.F.G.S Desarrollo de Aplicaciones Multiplataforma, y actualmente estoy realizando una especialización en Desarrollo Web. Priorizo las buenas prácticas y la constante búsqueda de información para poder resolver los proyectos que he llevado. En mis tiempos libres investigo sobre las nuevas tecnologías web y sobre la IA, busco mejorar día a día."
+        }
     }
 }
