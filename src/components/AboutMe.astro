@@ -1,10 +1,17 @@
 ---
 import {about} from '../collections/info.json'
+import CardAboutMe from './ui/CardAboutMe.astro'
+import abbadon from '../assets/images/abbadon.svg'
+
+const {presentation} = about
+const {title, content} = presentation
 ---
 <section class="py-20 px-6">
     <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <p>Hola</p>
+            <CardAboutMe type="presentation" mainContent={title} content={content}>
+                <img src={abbadon.src} alt="DSoledad">
+            </CardAboutMe>
         </div>
     </div>
 </section>
