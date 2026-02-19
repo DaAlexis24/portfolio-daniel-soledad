@@ -3,11 +3,13 @@ import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import { siteInfo } from '../config/info';
 import AboutMe from '../components/AboutMe.astro';
+import Experience from '../components/Experience.astro';
 ---
 
 <Layout title={siteInfo.meta.title} description={siteInfo.meta.description} keywords={siteInfo.meta.keywords}>
     <main class="bg-white dark:bg-gray-900" role="main">
         <Hero />
         <AboutMe />
+        <Experience />
     </main>
 </Layout>
