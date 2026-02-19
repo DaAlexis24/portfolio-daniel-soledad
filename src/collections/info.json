@@ -32,5 +32,30 @@
                 "Git"
             ]
         }
+    },
+    "experienceInfo": {
+        "info": [
+            {
+                "position": "Junior Development",
+                "date": "2023 - 2024",
+                "enterprise": "Abaco Developments",
+                "summary": "Era parte de un equipo de desarrolladores juniors, nos encargamos de reunirnos con nuestros clientes para poder construir aplicaciones escalables en base a sus requerimientos",
+                "achievements": [
+                    "Mejora de la UI",
+                    "Optimización del proyecto usando VBA"
+                ]
+            },
+            {
+                "position": "Supervisión de Formación",
+                "date": "2020 - 2022",
+                "enterprise": "MDY-BPO & Contact Center - Sede Colonial",
+                "summary": "Encargado de formar a nuevos trabajadores y a brindar capacitación continua a la plantilla, apoyándome en aplicaciones hechas por mí para poder desplegar mejor la información",
+                "achievements": [
+                    "Manejo de PCs remotos",
+                    "Mejora de Macros antiguas usando VBA y Excel",
+                    "Porcentaje de Altas y Nuevas Contrataciones: 85%"
+                ]
+            }
+        ]
     }
 }
