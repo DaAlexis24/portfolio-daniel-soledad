@@ -1,0 +1,35 @@
+---
+import { Briefcase } from '@lucide/astro';
+import { BadgeCheckIcon } from '@lucide/astro';
+
+export interface Props {
+    position: string;
+    date: string;
+    enterprise: string;
+    summary: string;
+    achievements: string[];
+}
+
+const {position, date, enterprise, summary, achievements} = Astro.props
+---
+<ol class="relative border-s border-default">
+    <li class="mb-10 ms-6">            
+        <span class="absolute flex items-center justify-center w-7 h-7 bg-brand-softer rounded-full -start-3 ring-8 ring-buffer">
+            <Briefcase size={5}/>
+        </span>
+        <time class="bg-neutral-secondary-medium border border-default-medium text-heading text-xs font-medium px-1.5 py-0.5 rounded">{date}</time>
+        <h3 class="flex items-center mb-1 text-lg font-semibold text-heading my-2">{position}</h3>
+        <p class="mb-4 text-body">{enterprise}</p>
+        <p class="mb-4 text-body">{summary}</p>
+        <ul class="space-y-1">
+            {achievements.map((achieve) => {
+                return(
+                    <li class="flex items-center gap-2 tablet:gap-3">
+                        <BadgeCheckIcon size={2.5}/>
+                        <span class="font-roboto text-sm">{achieve}</span>
+                    </li>
+                )
+            })}
+        </ul>
+    </li>
+</ol>
