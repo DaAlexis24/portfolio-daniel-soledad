@@ -36,3 +36,23 @@ Se soluciono realizando lo siguiente:
 ### Document should have one main landmark
 
 Para este problema solo añadí el atributo **role** dentro del header, navigation menu, main y footer.
+
+## Problemas con el texto del Theme Toggle para Desktop
+
+Ocurría un problema de renderizado con este elemento cuando abría en un navegador que tenia el _modo oscuro_ seleccionado por defecto, ya que aparecía el span **Light** en vez del **Dark** que sería lo correcto. Para resolverlo se inicializo la siguiente función:
+
+```js
+(function initTheme() {
+    const saved = localStorage.getItem("theme");
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+})();
+```
+
+Aquí se guarda el item _theme_ que esta dentro del Local Storage y/o la preferencia del Sistema, para así añadir o quitar la clase _.dark_ si corresponde. Luego de eso llama a **syncDarkModeIcons()** para alinear los iconos y los textos con el estado actual.
