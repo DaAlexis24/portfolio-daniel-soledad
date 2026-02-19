@@ -6,16 +6,16 @@ export interface Props {
     className?: string; // Custom CSS Classes
     mainContent: string;
     content?: string;
-    itemList?: [];
+    itemList?: string[];
     icon?: string;
 }
 
 const {type, className, mainContent, content, itemList, icon} = Astro.props
 ---
-<div class={`bento-card ${type === 'presentation' ? `tablet:col-span-2 p-8 group` : type === 'extra-info' ? `flex flex-col justify-between p-6 group` : type === 'skills-info' ? `tablet:col-span-2 p-6 group` : `p-6`} ${className}`}>
+<div class={`bento-card ${type === 'presentation' ? `tablet:col-span-2 p-8 group` : type === 'extra-info' ? `flex flex-col justify-between p-6 gap-4 group` : type === 'skills-info' ? `tablet:col-span-2 p-6 group` : `p-6`} ${className}`}>
     {type === "presentation" ? (
         <div class="flex items-start gap-6">
-            <div class="w-20 h-20 tablet:w-24 tablet:h-24 flex items-center justify-center shrink-0 group-hover:scale-105 rounded-4xl bg-linear-to-br from-radiant to-sea-blue dark:from-dire dark:to-gray-700">
+            <div class="w-20 h-20 tablet:w-24 tablet:h-24 flex items-center justify-center shrink-0 group-hover:scale-105 hover:ease-in hover:duration-300 rounded-4xl bg-linear-to-br from-radiant to-sea-blue dark:from-dire dark:to-gray-700">
                 <img src={icon} class="rounded-2xl group-hover:scale-105"/>
             </div>
             <hgroup class="flex flex-col gap-2">
@@ -24,8 +24,8 @@ const {type, className, mainContent, content, itemList, icon} = Astro.props
             </hgroup>
         </div>
     ):type === "extra-info" ? (
-        <div class="w-10 h-10 tablet:w-15 tablet:h-15 flex items-center justify-center rounded-2xl bg-linear-to-br from-radiant to-sea-blue dark:from-dire dark:to-gray-700 group-hover:scale-105">
-            <img src={icon}>
+        <div class="w-10 h-10 tablet:w-15 tablet:h-15 flex items-center justify-center rounded-2xl bg-linear-to-br from-radiant to-sea-blue dark:from-dire dark:to-gray-700 group-hover:scale-105 transition-colors">
+            <slot />
         </div>
         <div>
             <p class="font-rubik text-sm text-gray-500 dark:text-neutral-200">{content}</p>
@@ -34,15 +34,19 @@ const {type, className, mainContent, content, itemList, icon} = Astro.props
             </h3>
         </div>
     ):type === "skills-info" ? (
-        <div class="grid grid-cols-3 grid-rows-2 gap-8">
-            <div class="w-10 h-10">{icon}</div>
-            <h3 class="col-span-2 font-cinzel text-lg text-dark-blue dark:text-dire">{mainContent}</h3>
-            <div class="flex flex-wrap gap-2 font-roboto">{itemList?.map((item) => {
-                return (
-                    <span class="px-3 py-1.5 text-sm rounded-lg bg-radiant text-acero hover:bg-sea-blue hover:text-light-blue dark:bg-gray-800 dark:text-red-600 dark:hover:bg-dire dark:hover:text-niebla transition-colors cursor-default">{item}</span>
-                )
-            })}</div>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 tablet:w-15 tablet:h-15 flex items-center justify-center rounded-2xl bg-linear-to-br from-radiant to-sea-blue dark:from-dire dark:to-gray-700 group-hover:scale-105 transition-colors">
+                <slot />
+            </div>
+            <h3 class="font-cinzel text-lg text-dark-blue dark:text-dire">{mainContent}</h3>
         </div>
+        <div class="flex flex-wrap gap-2 font-roboto">{itemList?.map((item) => {
+            return (
+                <span class="px-3 py-1.5 text-sm rounded-lg bg-radiant text-acero hover:bg-sea-blue hover:text-light-blue dark:bg-gray-700 dark:text-niebla dark:hover:bg-dire dark:hover:text-gray-200 transition-colors cursor-default">
+                    {item}
+                </span>
+            )
+        })}</div>
     ): (
         <div><slot/></div>
     )}
@@ -55,15 +59,15 @@ const {type, className, mainContent, content, itemList, icon} = Astro.props
         border-radius: 1.5rem;
     }
     .bento-card:hover{
-        box-shadow: 0 0 0 1rem var(--color-radiant), ;
+        box-shadow: 0 0 0 2rem var(--color-radiant), ;
         transform: translateY(-0.2rem);
         transition: all 0.3s ease-in-out;
     }
     :global(.dark) .bento-card{
-        background-color: var(--color-light-black);
+        background-color: var(--color-menu-dota);
         border: 0.2rem solid var(--color-dire);
     }
     :global(.dark) .bento-card:hover{
-        box-shadow: 0 0 0 0 1rem var(--color-dire);
+        box-shadow: 0 0 0 0 2rem var(--color-dire);
     }
 </style>

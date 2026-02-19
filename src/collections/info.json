@@ -12,6 +12,25 @@
         "location": {
             "place": "Madrid, SP",
             "content": "Viviendo actualmente en"
+        },
+        "experience": {
+            "time": "1+ años",
+            "content": "Experiencia"
+        },
+        "skills": {
+            "title": "Tech Stack",
+            "skillsList": [
+                "Node.js",
+                "TypeScript",
+                "Java",
+                "VBA",
+                "Python",
+                "React",
+                "Astro",
+                "Strapi",
+                "PostgreSQL",
+                "Git"
+            ]
         }
     }
 }

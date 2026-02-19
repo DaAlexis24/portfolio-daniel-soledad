@@ -2,10 +2,13 @@
 import {about} from '../collections/info.json'
 import CardAboutMe from './ui/CardAboutMe.astro'
 import Abbadon from '../assets/images/abbadon.svg'
-import Map from '../assets/images/map-pin.svg'
+import { MapPin } from '@lucide/astro'
+import { BriefcaseBusinessIcon } from '@lucide/astro'
+import { CpuIcon } from '@lucide/astro'
 
-const {presentation, location} = about
+const {presentation, location, experience, skills} = about
 const {title, content} = presentation
+const {skillsList} = skills
 
 ---
 <section class="py-10 px-8">
@@ -15,7 +18,15 @@ const {title, content} = presentation
         </h2>
         <div class="grid grid-cols-1 tablet:grid-cols-3 gap-4 md:gap-6">
             <CardAboutMe type="presentation" mainContent={title} content={content} icon={Abbadon.src} />
-            <CardAboutMe type="extra-info" mainContent={location.place} content={location.content} icon={Map.src} />
+            <CardAboutMe type="extra-info" mainContent={location.place} content={location.content} className="text-light-gray">
+                <MapPin />
+            </CardAboutMe>
+            <CardAboutMe type="extra-info" mainContent={experience.time} content={experience.content} className="text-light-gray">
+                <BriefcaseBusinessIcon />
+            </CardAboutMe>
+            <CardAboutMe type="skills-info" mainContent={skills.title} itemList={skillsList} className="text-light-gray">
+                <CpuIcon />
+            </CardAboutMe>
         </div>
     </div>
 </section>

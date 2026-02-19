@@ -43,7 +43,6 @@
     /* Light colors */
     --color-light-gray: #f5f5f5;
     --color-light-blue: #e6f0fa;
-    --color-light-black: #222222;
     --color-dark-blue: #0056b3;
     --color-plomo: #e0e0e0;
     --color-bright-blue: #004085;
@@ -52,8 +51,10 @@
     --color-shadow-header: rgba(0 2px 4px rgba(0, 0, 0, 0.1));
 
     /* Dark colors */
+    --color-light-black: #222222;
     --color-acero: #4a5568;
     --color-niebla: #a1a1a1;
+    --color-menu-dota: #1e2939;
     --color-dire: #e7000b;
 
     /* Font Themes */
