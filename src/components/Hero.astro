@@ -7,12 +7,11 @@ import { UserSearchIcon } from '@lucide/astro';
 
 const {title, professions, abstract} = hero;
 ---
-
-<section class="mt-15 justify-center tablet:mt-20" role="presentation">
+<section class="mt-30 justify-center tablet:mt-40 lg:mt-50" role="presentation">
     <div class="grid grid-cols-1 max-w-7xl px-6 py-8 mx-auto sm:grid-cols-[1fr_auto] tablet:grid-cols-[2fr_1fr]">
-        <div class="flex flex-col gap-6 max-w-sm mx-auto text-center items-center justify-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-xl lg:max-w-3xl">
+        <div class="flex flex-col gap-6 max-w-sm mx-auto text-center items-center justify-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-xl lg:max-w-4xl">
             <hgroup>
-                <h1 class="flex items-center gap-2 text-4xl text-dark-blue tablet:text-6xl lg:text-8xl tablet:gap-4 dark:text-dire font-cinzel">Hi, I'm <span class="typing">{title}</span></h1>
+                <h1 class="flex items-center gap-2 text-4xl text-dark-blue tablet:text-6xl lg:text-7xl tablet:gap-4 dark:text-dire font-cinzel">Hi, I'm <span class="typing">{title}</span></h1>
                 <div class="text-decorative">
                     {professions.map((profession) => (
                         <p class="font-rubik font-semibold text-acero tablet:text-xl dark:text-light-gray">{profession}</p>
@@ -26,7 +25,7 @@ const {title, professions, abstract} = hero;
                 </Button>
                 {socialLinks.map((social)=> (
                     <a href={social.url} target="_blank"  rel="noopener noreferrer" title={social.site}>
-                        <div class="icons text-bright-blue dark:text-dire">
+                        <div class="icons text-bright-blue dark:text-dire hover:scale-105">
                             <Fragment set:html={social.icon} />
                         </div>
                     </a>
@@ -52,7 +51,9 @@ const {title, professions, abstract} = hero;
         width: 20px;
         height: 20px;
         fill: currentColor;
+        transition: all 0.3s ease-in-out;
     }
+
     p {
         content-visibility: auto;
         font-family: system-ui, -apple-system, sans-serif;
