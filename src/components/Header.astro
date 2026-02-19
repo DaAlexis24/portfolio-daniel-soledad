@@ -302,6 +302,17 @@ import Logo from "../assets/Logo.astro"
     });
 
     // Inicialización
+
+    // En esta función seleccionamos el valor por defecto
+    (function initTheme() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    })();
     syncDarkModeIcons();
     window.closeMobileMenu = closeMobileMenu;
 </script>
