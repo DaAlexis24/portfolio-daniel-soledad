@@ -12,24 +12,28 @@ export interface Props {
 
 const {position, date, enterprise, summary, achievements} = Astro.props
 ---
-<ol class="relative border-s border-default">
-    <li class="mb-10 ms-6">            
-        <span class="absolute flex items-center justify-center w-7 h-7 bg-brand-softer rounded-full -start-3 ring-8 ring-buffer">
-            <Briefcase size={5}/>
-        </span>
-        <time class="bg-neutral-secondary-medium border border-default-medium text-heading text-xs font-medium px-1.5 py-0.5 rounded">{date}</time>
-        <h3 class="flex items-center mb-1 text-lg font-semibold text-heading my-2">{position}</h3>
-        <p class="mb-4 text-body">{enterprise}</p>
-        <p class="mb-4 text-body">{summary}</p>
+<div class="flex mb-10">
+    <div class="relative border-s border-acero">
+        <div>
+            <span class="absolute top-0 flex items-center justify-center w-6 h-6 bg-bright-blue dark:bg-light-dire rounded-full -start-3 ring-6 ring-light-blue dark:ring-menu-dota text-light-blue">
+                <Briefcase size={15}/>
+            </span>
+        </div>
+    </div>
+    <div class="ms-6 p-4 border rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-2xs hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+        <time class= "inline-block bg-bright-blue text-radiant text-xs font-roboto px-1.5 py-0.5 rounded mb-3 dark:bg-dire dark:text-plata">{date}</time>
+        <h3 class="flex items-center mb-1 text-xl font-semibold">{position}</h3>
+        <p class="mb-1 text-bright-blue dark:text-light-dire">{enterprise}</p>
+        <p class="mb-4 text-sm leading-relaxed text-light-black dark:text-plata">{summary}</p>
         <ul class="space-y-1">
             {achievements.map((achieve) => {
                 return(
-                    <li class="flex items-center gap-2 tablet:gap-3">
-                        <BadgeCheckIcon size={2.5}/>
-                        <span class="font-roboto text-sm">{achieve}</span>
-                    </li>
+                <li class="flex items-center list-none gap-2 tablet:gap-3">
+                    <BadgeCheckIcon size={10} class="text-bright-blue dark:text-light-diredire"/>
+                    <span class="font-roboto text-sm text-hard-radiant dark:text-niebla">{achieve}</span>
+                </li>
                 )
             })}
         </ul>
-    </li>
-</ol>
+    </div>
+</div>

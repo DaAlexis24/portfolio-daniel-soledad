@@ -6,11 +6,11 @@ import ExperienceCard from './ui/ExperienceCard.astro'
 
 <section class="py-10 px-8">
     <div class="max-w-7xl mx-auto">
-        <hgroup class="mb-2">
+        <hgroup class="mb-8">
             <h2 class="text-2xl mb-4 text-bright-blue dark:text-dire tablet:text-3xl lg:text-5xl">Mi Experiencia</h2>
             <p class="text-sm text-gray-600 dark:text-neutral-300">Te cuento como ha sido mi camino profesional y como ello me transformo en el profesional que soy ahora</p>
         </hgroup>
-        <div>
+        <div class="pl-3">
             {info.map((item) => {
                 return(
                     <ExperienceCard position={item.position} date={item.date} enterprise={item.enterprise} summary={item.summary} achievements={item.achievements} />

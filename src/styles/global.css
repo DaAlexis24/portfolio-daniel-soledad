@@ -48,6 +48,7 @@
     --color-bright-blue: #004085;
     --color-sea-blue: #002b5c;
     --color-radiant: #e7fcc0;
+    --color-hard-radiant: #a1d04c;
     --color-shadow-header: rgba(0 2px 4px rgba(0, 0, 0, 0.1));
 
     /* Dark colors */
@@ -55,6 +56,7 @@
     --color-acero: #4a5568;
     --color-niebla: #a1a1a1;
     --color-menu-dota: #1e2939;
+    --color-light-dire: #eb323b;
     --color-dire: #e7000b;
     --color-plata: #cad5e2;
 
