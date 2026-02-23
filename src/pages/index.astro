@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import { siteInfo } from '../config/info';
 import AboutMe from '../components/AboutMe.astro';
 import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
 ---
 
 <Layout title={siteInfo.meta.title} description={siteInfo.meta.description} keywords={siteInfo.meta.keywords}>
@@ -12,5 +13,6 @@ import Experience from '../components/Experience.astro';
         <Hero />
         <AboutMe />
         <Experience />
+        <Projects />
     </main>
 </Layout>
