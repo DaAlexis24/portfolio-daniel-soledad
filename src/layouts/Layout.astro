@@ -1,9 +1,11 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Meta from './Meta.astro';
 import '../styles/global.css'
 import 'flowbite'
+
 
 interface Props {
     title: string | undefined;
@@ -17,6 +19,7 @@ const {title, description, keywords} = Astro.props
 <html lang="es">
 	<head>
 		<Meta title={title} description={description} keywords={keywords}/>
+        <ClientRouter />
 	</head>
 	<body>
 	<div class="grid grid-rows-[auto_1fr_auto] min-h-dvh overflow-x-hidden">

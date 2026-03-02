@@ -7,8 +7,8 @@ const projects = defineCollection({
         description: z.string(),
         stack: z.array(z.string()).default([]),
         urls: z.object({
-            demo: z.string(),
-            code: z.string(),
+            demo: z.string().optional(),
+            code: z.string().optional(),
         }),
     }),
 });

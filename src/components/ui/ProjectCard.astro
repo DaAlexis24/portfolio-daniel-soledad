@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import Button from './Button.astro';
+const projects = await getCollection('projects')
+---
+{
+    projects.map((project: { slug: any; data: any; }) => {
+        const {slug, data} = project
+        const {title, img, description, stack, urls} = data
+
+        return (
+        <article aria-label={title} class="flex flex-col p-6 border max-w-md mx-auto overflow-hidden rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-2xs hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+            <a href={`proyectos/${slug}`} class="mb-2 transition hover:animate-scale">
+                <img src={`/${img}`} alt={title} class="w-48 rounded-2xl"/>
+            </a>
+            <div class="flex flex-col grow p-3">
+                <h3 class="mb-4 text-2xl leading-tight">{title}</h3>
+                <p class="mb-2 text-light-blue dark:text-light-dire text-sm">{description}</p>
+                <div class="flex gap-2">
+                    {stack.map((item:any) => {
+                        return (
+                            <span class="w-10 h-10">
+                                {item}
+                            </span>
+                        )
+                    })}
+                </div>
+                <div class="flex gap-2">
+                    if(urls.demo){
+                        <Button type="solid" url={urls.demo}>Demo</Button>
+                    }
+                    if(urls.code){
+                        <Button type="solid" url={urls.code}>
+                            Código
+                        </Button>
+                    }
+                </div>
+            </div>
+        </article>
+    )
+    })
+}
