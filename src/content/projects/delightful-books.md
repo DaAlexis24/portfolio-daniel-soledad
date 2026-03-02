@@ -2,10 +2,7 @@
 title: Delightful Books
 img: delightful-books.webp
 description: Landing Page de libros donde usamos Astro 5, y así probamos sus nuevas funcionalidades - Content Layer y Server Islands
-stack:
-    - Astro.astro
-    - Typescript.astro
-    - Tailwind.astro
+stack: [astro.svg, typescript.svg, tailwindcss.svg]
 urls:
     demo: https://dev-books-tawny.vercel.app/
     code: https://github.com/DaAlexis24/delightful-books

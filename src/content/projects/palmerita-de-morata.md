@@ -3,10 +3,11 @@ title: Tienda - La Palmerita de Morata
 img: la-palmerita-web.webp
 description: Tienda Virtual para la pastelería/panadería La Palmerita de Morata usando la metodología Headless CMS
 stack:
-    - Next.astro
-    - Prestashop.astro
-    - Typescript.astro
-    - Tailwind.astro
+    - nextjs.svg
+    - prestashop.svg
+    - typescript.svg
+    - tailwindcss.svg
+    - nodejs.svg
 urls:
     demo: https://lapalmeritademorataenmadrid.es/
 ---
