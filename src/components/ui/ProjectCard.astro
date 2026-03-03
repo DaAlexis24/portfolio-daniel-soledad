@@ -20,10 +20,18 @@ const projects = await getCollection('projects')
                 <h3 class="mb-4 text-2xl leading-tight">{title}</h3>
                 <p class="mb-4 text-medium-gray dark:text-plata text-sm">{description}</p>
                 <div class="flex grow gap-4 mb-6">
-                    {stack.map((item:any) => {
-                        return (
-                            <img src={`/${item}`} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
-                        )
+                    {stack.map((item) => {
+                        const isThemed = typeof item === 'object';
+                        const name = isThemed ? item.light.replace(/\.[^.]+$/, '') : item.replace(/\.[^.]+$/, '');
+                        
+                        return isThemed ? (
+                            <>
+                                <img src={`/${item.light}`} title={name} alt={name} class="h-7 w-7 object-scale-down block dark:hidden" />
+                                <img src={`/${item.dark}`} title={name} alt={name} class="h-7 w-7 object-scale-down hidden dark:block" />
+                            </>
+                            ) : (
+                            <img src={`/${item}`} title={item.replace(/\.[^.]+$/, '')} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
+                        );
                     })}
                 </div>
                 <div class="flex gap-4">

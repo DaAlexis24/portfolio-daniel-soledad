@@ -3,8 +3,7 @@ title: Delightful Books
 img: delightful-books.webp
 description: Landing Page de libros donde usamos Astro 5, y así probamos sus nuevas funcionalidades - Content Layer y Server Islands
 stack:
-    - light: astro-light.svg
-        dark: astro-dark.svg
+    - { light: astro-light.svg, dark: astro-dark.svg }
     - typescript.svg
     - tailwindcss.svg
 urls:
