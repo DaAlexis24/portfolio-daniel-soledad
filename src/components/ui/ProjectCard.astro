@@ -12,13 +12,13 @@ const projects = await getCollection('projects')
         const {title, img, description, stack, urls} = data
 
         return (
-        <article aria-label={title} class="group flex w-full flex-col p-6 border max-w-sm tablet:max-w-lg lg:max-w-2xl mx-auto overflow-hidden rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-2xs hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+        <article aria-label={title} class="group flex w-full flex-col p-8 border max-w-sm tablet:max-w-lg lg:max-w-2xl mx-auto overflow-hidden rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/30 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
             <a href={`proyectos/${slug}`} class="mb-2">
-                <Image src={`/${img}`} alt={title} width={600} height={300} class="w-full object-cover rounded-2xl" priority densities={[1.5, 2]} format="avif" quality="mid"/>
+                <Image src={`/${img}`} alt={title} width={600} height={300} class="w-full object-cover rounded-2xl group-hover:-translate-0.5 group-hover:duration-400" priority densities={[1.5, 2]} format="avif" quality="mid"/>
             </a>
             <div class="flex flex-col p-3">
                 <h3 class="mb-4 text-2xl leading-tight">{title}</h3>
-                <p class="mb-4 text-bright-blue dark:text-light-dire text-sm">{description}</p>
+                <p class="mb-4 text-medium-gray dark:text-plata text-sm">{description}</p>
                 <div class="flex grow gap-4 mb-6">
                     {stack.map((item:any) => {
                         return (
