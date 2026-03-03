@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { ExternalLink, Github } from "@lucide/astro";
+
+export async function getStaticPaths () {
+    const projects = await getCollection('projects')
+
+    return projects.map((project) => ({
+        params: {id: project.slug},
+        props: {project}
+    }))
+}
+
+const {project} = Astro.props
+const {data, slug} = project
+const {title, img, description, stack, urls} = data
+
+export const prerender = true
+
+const {Content} = await render(project)
+---
+
+<Layout title={`${title} | Proyectos | Daniel Soledad Dev`} description={description} keywords={`${title}, proyectos, Daniel Soledad`}>
+    <main class="bg-white dark:bg-gray-900" role="main">
+        <article class="flex flex-col gap-8 max-w-7xl mx-auto mt-30 mb-20 tablet:mt-40 lg:mt-50 " role="article" aria-label={`Información sobre el proyecto ${title}`}>
+            <div class="flex flex-col justify-center items-center gap-4">
+                <Image src={`/${img}`} alt={title} width={600} height={450} class="rounded" />
+                <div class="flex grow gap-4 mb-6">
+                    {stack.map((item:any) => {
+                        return (
+                            <img src={`/${item}`} title={item.replace(/\.[^.]+$/, '')} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
+                        )
+                    })}
+                </div>
+            </div>
+            <header class="flex items-start justify-between mb-6">
+                <h1 class="text-5xl font-extrabold">{title}</h1>
+                <div class="flex gap-3">
+                    {urls.demo !== null && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg hover:bg-radiant dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
+                        <ExternalLink size={20}/>
+                    </a>}
+                    {urls.code && <a href={urls.code} target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg hover:bg-radiant dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
+                        <Github size={20}/>
+                    </a>}
+                </div>
+            </header>
+            <div class="max-w-7xl prose dark:prose-invert">
+                <Content/>
+            </div>
+        </article>
+    </main>
+</Layout>
