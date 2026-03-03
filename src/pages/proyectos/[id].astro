@@ -27,10 +27,18 @@ const {Content} = await render(project)
         <article class="flex flex-col gap-8 max-w-7xl mx-auto mt-30 mb-20 tablet:mt-40 lg:mt-50 " role="article" aria-label={`Información sobre el proyecto ${title}`}>
             <div class="flex flex-col justify-center items-center gap-4 mb-6">
                 <div class="stack-icon flex grow gap-4 mb-6">
-                    {stack.map((item:any) => {
-                        return (
+                    {stack.map((item) => {
+                        const isThemed = typeof item === 'object';
+                        const name = isThemed ? item.light.replace(/\.[^.]+$/, '') : item.replace(/\.[^.]+$/, '');
+                        
+                        return isThemed ? (
+                            <>
+                                <img src={`/${item.light}`} title={name} alt={name} class="h-7 w-7 object-scale-down block dark:hidden" />
+                                <img src={`/${item.dark}`} title={name} alt={name} class="h-7 w-7 object-scale-down hidden dark:block" />
+                            </>
+                            ) : (
                             <img src={`/${item}`} title={item.replace(/\.[^.]+$/, '')} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
-                        )
+                        );
                     })}
                 </div>
                 <Image src={`/${img}`} alt={title} width={600} height={450} class="rounded transition-all duration-150 ease-in-out hover:animate-scale" />
