@@ -20,17 +20,17 @@ const {position, date, enterprise, summary, achievements} = Astro.props
             </span>
         </div>
     </div>
-    <div class="ms-6 p-4 border rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-2xs hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
-        <time class= "inline-block bg-bright-blue text-radiant text-xs font-roboto px-1.5 py-0.5 rounded mb-3 dark:bg-ancient dark:text-plata">{date}</time>
+    <div class="ms-6 p-4 border rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/20 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+        <time class= "inline-block bg-hard-radiant text-dark-blue text-xs font-roboto px-1.5 py-0.5 rounded mb-3 dark:bg-ancient dark:text-plata">{date}</time>
         <h3 class="flex items-center mb-1 text-xl font-semibold">{position}</h3>
-        <p class="mb-1 text-bright-blue dark:text-light-dire">{enterprise}</p>
-        <p class="mb-4 text-sm leading-relaxed text-light-black dark:text-plata">{summary}</p>
+        <p class="mb-1 text-bright-blue dark:text-orange/90">{enterprise}</p>
+        <p class="mb-4 text-sm leading-relaxed text-medium-gray dark:text-plata">{summary}</p>
         <ul class="space-y-1">
             {achievements.map((achieve) => {
                 return(
                 <li class="flex items-center list-none gap-2 tablet:gap-3">
                     <BadgeCheckIcon size={10} class="text-bright-blue dark:text-light-dire"/>
-                    <span class="font-roboto text-sm text-hard-radiant dark:text-niebla">{achieve}</span>
+                    <span class="font-roboto text-sm text-medium-gray dark:text-plata">{achieve}</span>
                 </li>
                 )
             })}

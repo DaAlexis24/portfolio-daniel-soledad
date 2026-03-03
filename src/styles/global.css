@@ -24,10 +24,10 @@
 }
 
 @font-face {
-    font-display: swap;
     font-family: "Roboto Serif";
     font-style: normal;
     font-weight: 500;
+    font-display: swap;
     src: url("../assets/fonts/roboto-serif-v17-latin-500.woff2") format("woff2");
 }
 
@@ -49,13 +49,14 @@
     --color-sea-blue: #002b5c;
     --color-radiant: #e7fcc0;
     --color-hard-radiant: #a1d04c;
+    --color-medium-gray: #4a5565;
     --color-shadow-header: rgba(0 2px 4px rgba(0, 0, 0, 0.1));
 
     /* Dark colors */
     --color-light-black: #222222;
     --color-acero: #4a5568;
     --color-niebla: #a1a1a1;
-    --color-menu-dota: #1e2939;
+    --color-menu-dota: #293444;
     --color-light-dire: #eb323b;
     --color-dire: #e7000b;
     --color-ancient: #731212;
