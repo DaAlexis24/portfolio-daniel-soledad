@@ -1,5 +1,7 @@
 ---
 import ProjectCard from "./ui/ProjectCard.astro";
+import Button from "./ui/Button.astro";
+import { CircleArrowRight } from "@lucide/astro";
 ---
 
 <section class="py-10 px-8">
@@ -10,6 +12,11 @@ import ProjectCard from "./ui/ProjectCard.astro";
         </hgroup>
         <div class="mt-8 p-2 grid gap-8 tablet:grid-cols-2">
             <ProjectCard />
+        </div>
+        <div class="flex p-2 justify-center items-center mt-4 tablet:mt-8">
+            <Button type="solid" url="/proyectos">
+                Más Proyectos <CircleArrowRight size={20}/>
+            </Button>
         </div>
     </div>
 </section>

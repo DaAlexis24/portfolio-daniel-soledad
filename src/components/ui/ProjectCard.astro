@@ -1,37 +1,34 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Button from './Button.astro';
+import { ExternalLink, Code } from "@lucide/astro";
+
 const projects = await getCollection('projects')
 ---
 {
-    projects.map((project: { slug: any; data: any; }) => {
+    projects.map((project) => {
         const {slug, data} = project
         const {title, img, description, stack, urls} = data
 
         return (
         <article aria-label={title} class="group flex w-full flex-col p-6 border max-w-sm tablet:max-w-lg lg:max-w-2xl mx-auto overflow-hidden rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-2xs hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
             <a href={`proyectos/${slug}`} class="mb-2">
-                <img src={`/${img}`} alt={title} class="h-52 w-full object-cover rounded-2xl"/>
+                <Image src={`/${img}`} alt={title} width={600} height={300} class="w-full object-cover rounded-2xl" priority densities={[1.5, 2]} format="avif" quality="mid"/>
             </a>
             <div class="flex flex-col p-3">
                 <h3 class="mb-4 text-2xl leading-tight">{title}</h3>
-                <p class="mb-4 text-light-blue dark:text-light-dire text-sm">{description}</p>
-                <div class="flex grow gap-4">
+                <p class="mb-4 text-bright-blue dark:text-light-dire text-sm">{description}</p>
+                <div class="flex grow gap-4 mb-6">
                     {stack.map((item:any) => {
                         return (
-                            <img class="w-5 h-5" src={`/${item}`} alt="Icon" />
+                            <img src={`/${item}`} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
                         )
                     })}
                 </div>
-                <div class="flex gap-2">
-                    if(urls.demo){
-                        <Button type="solid" url={urls.demo}>Demo</Button>
-                    }
-                    if(urls.code){
-                        <Button type="solid" url={urls.code}>
-                            Código
-                        </Button>
-                    }
+                <div class="flex gap-4">
+                    {urls.demo !== null && <Button type="fill" url={urls.demo} target="_blank">Demo <ExternalLink size={16}/></Button>}
+                    {urls.code && <Button type="fill" url={urls.code} target="_blank">Code <Code size={16}/></Button>}
                 </div>
             </div>
         </article>
