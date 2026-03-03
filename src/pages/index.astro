@@ -1,11 +1,12 @@
 ---
-export const prerender = false
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import { siteInfo } from '../config/info';
 import AboutMe from '../components/AboutMe.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
+
+export const prerender = false
 ---
 
 <Layout title={siteInfo.meta.title} description={siteInfo.meta.description} keywords={siteInfo.meta.keywords}>
