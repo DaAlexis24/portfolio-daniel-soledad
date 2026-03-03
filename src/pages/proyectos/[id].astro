@@ -37,19 +37,19 @@ const {Content} = await render(project)
                                 <img src={`/${item.dark}`} title={name} alt={name} class="h-7 w-7 object-scale-down hidden dark:block" />
                             </>
                             ) : (
-                            <img src={`/${item}`} title={item.replace(/\.[^.]+$/, '')} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
+                            <img src={`/${item}`} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
                         );
                     })}
                 </div>
-                <Image src={`/${img}`} alt={title} width={600} height={450} class="rounded transition-all duration-150 ease-in-out hover:animate-scale" />
+                <Image src={`/${img}`} alt={title} width={700} height={450} class="rounded transition-all duration-150 ease-in-out object-contain hover:animate-scale" />
             </div>
             <header class="flex items-start justify-between mb-4">
                 <h1 class="text-5xl font-extrabold">{title}</h1>
                 <div class="flex gap-2">
-                    {urls.demo !== null && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-4 rounded-full hover:bg-radiant dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
+                    {urls.demo !== null && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-radiant   dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
                         <ExternalLink size={25}/>
                     </a>}
-                    {urls.code && <a href={urls.code} target="_blank" rel="noopener noreferrer" class="p-4 rounded-full hover:bg-radiant dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
+                    {urls.code && <a href={urls.code} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-radiant dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
                         <Github size={25}/>
                     </a>}
                 </div>

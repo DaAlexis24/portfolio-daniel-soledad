@@ -17,7 +17,6 @@ Se han utilizado el concepto de **Content Layer** a la hora de generar las _card
 
 La ventaja de los markdown a diferencia de los JSON es que pueden tener un _front-matter_ donde podemos definir sus características, mientras podemos escribir y estilizar el markdown como normalmente se suele hacer.
 
-> [!IMPORTANT]
 > Si en algún momento las colecciones dejan de ser reconocidas por el proyecto, solo tenemos que ejecutar el siguiente comando en la terminal: `npx astro sync`
 > Esto limpiará la cache y todo regresará a la normalidad
 
