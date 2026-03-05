@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { ExternalLink, Github } from "@lucide/astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 
 export async function getStaticPaths () {
     const projects = await getCollection('projects')
@@ -24,47 +25,42 @@ const {Content} = await render(project)
 
 <Layout title={`${title} | Proyectos | Daniel Soledad Dev`} description={description} keywords={`${title}, proyectos, Daniel Soledad`}>
     <main class="bg-white dark:bg-gray-900" role="main">
-        <article class="flex flex-col gap-8 max-w-7xl mx-auto mt-30 mb-20 tablet:mt-40 lg:mt-50 " role="article" aria-label={`Información sobre el proyecto ${title}`}>
-            <div class="flex flex-col justify-center items-center gap-4 mb-6">
-                <div class="stack-icon flex grow gap-4 mb-6">
-                    {stack.map((item) => {
-                        const isThemed = typeof item === 'object';
-                        const name = isThemed ? item.light.replace(/\.[^.]+$/, '') : item.replace(/\.[^.]+$/, '');
+        <div class="container mx-auto p-10 tablet:p-20 mt-24">
+            <Breadcrumbs />
+            <article class="flex flex-col gap-8 mt-10" role="article" aria-label={`Información sobre el proyecto ${title}`}>
+                <div class="flex flex-col justify-around items-center mb-2 gap-6 tablet:flex-row tablet:justify-center tablet:mb-4 lg:mb-6">
+                    <Image src={`/${img}`} alt={title} title={title} width={550} height={350} class="lg:w-4xl lg:h-auto rounded-2xl transition-all duration-150 ease-in-out object-contain hover:-translate-y-1" loading="eager" />
+                    <div class="flex items-center tablet:flex-col gap-4">
+                        {stack.map((item) => {
+                            const isThemed = typeof item === 'object';
+                            const name = isThemed ? item.light.replace(/\.[^.]+$/, '') : item.replace(/\.[^.]+$/, '');
                         
-                        return isThemed ? (
-                            <>
-                                <img src={`/${item.light}`} title={name} alt={name} class="h-7 w-7 object-scale-down block dark:hidden" />
-                                <img src={`/${item.dark}`} title={name} alt={name} class="h-7 w-7 object-scale-down hidden dark:block" />
-                            </>
-                            ) : (
-                            <img src={`/${item}`} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
-                        );
-                    })}
+                            return isThemed ? (
+                                <>
+                                    <img src={`/${item.light}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={name} class="h-7 w-7 lg:h-10 lg:w-10 object-scale-down block dark:hidden" />
+                                    <img src={`/${item.dark}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={name} class="h-7 w-7 lg:h-10 lg:w-10 object-scale-down hidden dark:block" />
+                                </>
+                                ) : (
+                                <img src={`/${item}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 lg:h-10 lg:w-10 object-scale-down" />
+                            );
+                        })}
+                    </div>
                 </div>
-                <Image src={`/${img}`} alt={title} width={700} height={450} class="rounded transition-all duration-150 ease-in-out object-contain hover:animate-scale" />
-            </div>
-            <header class="flex items-start justify-between mb-4">
-                <h1 class="text-5xl font-extrabold">{title}</h1>
-                <div class="flex gap-2">
-                    {urls.demo !== null && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-radiant   dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
-                        <ExternalLink size={25}/>
-                    </a>}
-                    {urls.code && <a href={urls.code} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-radiant dark:hover:bg-orange transition-colors relative z-10 text-bright-blue dark:text-dire">
-                        <Github size={25}/>
-                    </a>}
+                <header class="flex flex-col items-start tablet:flex-row tablet:items-center justify-between mb-2 tablet:mb-4 lg:mb-6">
+                    <h1 class="text-4xl tablet:text-6xl lg:text-7xl font-extrabold">{title}</h1>
+                    <div class="flex gap-2 justify-center items-center">
+                        {urls.demo !== null && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-sea-blue dark:hover:bg-menu-dota dark:hover:text-plata hover:text-radiant transition-colors relative z-10 text-hard-radiant dark:text-orange">
+                            <ExternalLink size={30}/>
+                        </a>}
+                        {urls.code && <a href={urls.code} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-sea-blue dark:hover:bg-menu-dota dark:hover:text-plata hover:text-radiant transition-colors relative z-10 text-hard-radiant dark:text-orange">
+                            <Github size={30}/>
+                        </a>}
+                    </div>
+                </header>
+                <div class="max-w-8xl prose dark:prose-invert">
+                    <Content/>
                 </div>
-            </header>
-            <div class="max-w-7xl prose dark:prose-invert">
-                <Content/>
-            </div>
-        </article>
+            </article>
+        </div>
     </main>
 </Layout>
-
-<style>
-    @media (prefers-color-scheme: dark) {
-        .stack-icon .ic-astro-icon-light{
-            background-image: url("astro-icon-dark.svg");
-        }
-    }
-</style>
