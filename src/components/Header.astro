@@ -233,7 +233,7 @@ import Logo from "../assets/Logo.astro"
 </style>
 
 <script is:inline>
-    // Solo ejecuta en cliente, sin procesamiento de Astro
+  function initHeader() {
     const darkToggle = document.getElementById('darkToggle');
     const darkToggleMobile = document.getElementById('darkToggleMobile');
     const openMenu = document.getElementById('openMenu');
@@ -242,46 +242,46 @@ import Logo from "../assets/Logo.astro"
     let isMobileMenuOpen = false;
 
     function syncDarkModeIcons() {
-        const isDark = document.documentElement.classList.contains('dark');
-        const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
-        const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
-        
-        if (isDark) {
-            moonIcons.forEach(icon => icon.classList.remove('hidden'));
-            sunIcons.forEach(icon => icon.classList.add('hidden'));
-            document.getElementById('dayText')?.classList.add('hidden');
-            document.getElementById('nightText')?.classList.remove('hidden');
-        } else {
-            sunIcons.forEach(icon => icon.classList.remove('hidden'));
-            moonIcons.forEach(icon => icon.classList.add('hidden'));
-            document.getElementById('dayText')?.classList.remove('hidden');
-            document.getElementById('nightText')?.classList.add('hidden');
-        }
+      const isDark = document.documentElement.classList.contains('dark');
+      const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
+      const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
+
+      if (isDark) {
+        moonIcons.forEach(icon => icon.classList.remove('hidden'));
+        sunIcons.forEach(icon => icon.classList.add('hidden'));
+        document.getElementById('dayText')?.classList.add('hidden');
+        document.getElementById('nightText')?.classList.remove('hidden');
+      } else {
+        sunIcons.forEach(icon => icon.classList.remove('hidden'));
+        moonIcons.forEach(icon => icon.classList.add('hidden'));
+        document.getElementById('dayText')?.classList.remove('hidden');
+        document.getElementById('nightText')?.classList.add('hidden');
+      }
     }
 
     function toggleDarkMode() {
-        const html = document.documentElement;
-        html.classList.toggle('dark');
-        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-        syncDarkModeIcons();
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      syncDarkModeIcons();
     }
 
     function openMobileMenu() {
-        menu?.classList.remove('hidden');
-        openMenu?.classList.add('hidden');
-        closeMenu?.classList.remove('hidden', 'flex');
-        closeMenu?.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-        isMobileMenuOpen = true;
+      menu?.classList.remove('hidden');
+      openMenu?.classList.add('hidden');
+      closeMenu?.classList.remove('hidden', 'flex');
+      closeMenu?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      isMobileMenuOpen = true;
     }
 
     function closeMobileMenu() {
-        menu?.classList.add('hidden');
-        closeMenu?.classList.add('hidden');
-        closeMenu?.classList.remove('flex');
-        openMenu?.classList.remove('hidden');
-        document.body.style.overflow = '';
-        isMobileMenuOpen = false;
+      menu?.classList.add('hidden');
+      closeMenu?.classList.add('hidden');
+      closeMenu?.classList.remove('flex');
+      openMenu?.classList.remove('hidden');
+      document.body.style.overflow = '';
+      isMobileMenuOpen = false;
     }
 
     // Event listeners
@@ -290,29 +290,20 @@ import Logo from "../assets/Logo.astro"
     openMenu?.addEventListener('click', openMobileMenu);
     closeMenu?.addEventListener('click', closeMobileMenu);
 
-    // Menu links close on mobile
     menu?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth < 640) closeMobileMenu();
-        });
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 640) closeMobileMenu();
+      });
     });
 
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 640) closeMobileMenu();
+      if (window.innerWidth >= 640) closeMobileMenu();
     });
 
-    // Inicialización
-
-    // En esta función seleccionamos el valor por defecto
-    (function initTheme() {
-        const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (!saved && prefersDark)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    })();
     syncDarkModeIcons();
     window.closeMobileMenu = closeMobileMenu;
+  }
+
+  // ✅ Corre en carga inicial Y en cada navegación con ClientRouter
+  document.addEventListener('astro:page-load', initHeader);
 </script>

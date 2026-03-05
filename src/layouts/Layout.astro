@@ -1,5 +1,5 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter, fade } from 'astro:transitions';
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Meta from './Meta.astro';
@@ -53,12 +53,15 @@ const {title, description, keywords} = Astro.props
 </style>
 
 <script>
-// Importado de la documentación de Tailwind CSS
-document.documentElement.classList.toggle("dark", localStorage.theme === "dark" ||(!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),);
-// Whenever the user explicitly chooses light mode
-localStorage.theme = "light";
-// Whenever the user explicitly chooses dark mode
-localStorage.theme = "dark";
-// Whenever the user explicitly chooses to respect the OS preference
-localStorage.removeItem("theme");
+function applyTheme() {
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
+  }
+
+  applyTheme();
+  document.addEventListener("astro:after-swap", applyTheme);
 </script>

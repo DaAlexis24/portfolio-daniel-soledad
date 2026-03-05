@@ -33,7 +33,7 @@ fullPath.shift()
             <Breadcrumbs fullPath={fullPath} label={title} />
             <article class="flex flex-col gap-8 mt-10" role="article" aria-label={`Información sobre el proyecto ${title}`}>
                 <div class="flex flex-col justify-around items-center mb-2 gap-6 tablet:flex-row tablet:justify-center tablet:mb-4 lg:mb-6">
-                    <Image transition:name="image" src={`/${img}`} alt={title} title={title} width={550} height={350} class="lg:w-4xl lg:h-auto rounded-2xl transition-all duration-150 ease-in-out object-contain hover:-translate-y-1" loading="eager" />
+                    <Image transition:name={`img-${slug}`} src={`/${img}`} alt={title} title={title} width={550} height={350} class="lg:w-4xl lg:h-auto rounded-2xl transition-all duration-150 ease-in-out object-contain hover:-translate-y-1" loading="eager" />
                     <div class="flex items-center tablet:flex-col gap-4">
                         {stack.map((item) => {
                             const isThemed = typeof item === 'object';
