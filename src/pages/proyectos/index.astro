@@ -1,1 +1,23 @@
-<h1>Soy Proyecto index</h1>
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import HeaderPage from "../../components/ui/HeaderPage.astro";
+
+const projects = await getCollection('projects')
+const path = Astro.url.pathname
+const fullPath = path.split('/')
+fullPath.shift()
+
+export const prerender = true
+---
+<Layout title="Proyectos | DS FullStack Dev" description="Página de proyectos del desarrollador de aplicaciones web Daniel Soledad" keywords="proyectos, Full Stack, Desarrollo Web">
+    <main class="bg-white dark:bg-gray-900" role="main">
+        <HeaderPage title="Proyectos">
+            <Breadcrumbs fullPath={fullPath} label="Proyectos" />
+        </HeaderPage>
+        <div class="">
+
+        </div>
+    </main>
+</Layout>
