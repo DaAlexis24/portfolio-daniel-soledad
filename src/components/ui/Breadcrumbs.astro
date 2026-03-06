@@ -9,9 +9,9 @@ interface Props {
 const {fullPath, label} = Astro.props
 ---
 <nav class="flex text-sm tracking-wide" aria-label="Breadcrumb">
-    <ol class="inline-flex items-center text-bright-blue dark:text-ancient space-x-1 tablet:space-x-2 lg:space-x-reverse font-roboto">
+    <ol class="inline-flex items-center text-bright-blue dark:text-plata space-x-1 tablet:space-x-2 lg:space-x-reverse font-roboto">
         <li class="inline-flex items-center space-x-1.5">
-            <a href="/" class="inline-flex font-medium items-center hover:text-hard-radiant dark:hover:text-plata">
+            <a href="/" class="inline-flex py-1 px-2 rounded-2xl font-medium items-center hover:bg-hard-radiant dark:hover:bg-acero">
                 <House size={20}/>
             </a>
             <CircleChevronRight size={20}/>
@@ -21,11 +21,11 @@ const {fullPath, label} = Astro.props
             return (
                 <li class="inline-flex items-center space-x-1.5">
                     {!isLast && item ? (
-                        <a href={`/${item}`} class="font-medium hover:text-hard-radiant dark:hover:text-plata">
+                        <a href={`/${item}`} class="font-medium rounded-xl p-1 px-2 hover:bg-hard-radiant dark:hover:bg-acero">
                             {item.charAt(0).toUpperCase() + item.slice(1)}
                         </a>
                     ) : (
-                        <span class="ml-1 text-sm text-bright-blue/90 dark:text-ancient/90" aria-current="page">
+                        <span class="ml-1 text-sm text-bright-blue/90 dark:text-plata/90" aria-current="page">
                             {label}
                         </span>
                     )}
