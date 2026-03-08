@@ -24,7 +24,9 @@ const {title, description, keywords} = Astro.props
 	<body>
 	<div class="grid grid-rows-[auto_1fr_auto] min-h-dvh overflow-x-hidden">
 	  <Header />
-	  <slot />
+      <main class="min-h-0 self-stretch pt-15 bg-white dark:bg-gray-900" role="main">
+        <slot />
+      </main>
 	  <Footer />
 	</div>
 	</body>
