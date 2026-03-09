@@ -8,6 +8,8 @@ stack:
     - typescript.svg
     - tailwindcss.svg
     - nodejs.svg
+category: FullStack
+isFeatured: true
 urls:
     demo: https://lapalmeritademorataenmadrid.es/
 ---

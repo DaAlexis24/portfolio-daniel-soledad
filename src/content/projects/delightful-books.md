@@ -6,6 +6,8 @@ stack:
     - { light: astro-light.svg, dark: astro-dark.svg }
     - typescript.svg
     - tailwindcss.svg
+category: Frontend
+isFeatured: true
 urls:
     demo: https://dev-books-tawny.vercel.app/
     code: https://github.com/DaAlexis24/delightful-books

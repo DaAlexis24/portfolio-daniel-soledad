@@ -14,6 +14,13 @@ const projects = defineCollection({
         img: z.string(),
         description: z.string(),
         stack: z.array(stackIconSchema),
+        category: z.enum([
+            "FullStack",
+            "Frontend",
+            "Backend",
+            "Multiplataforma",
+        ]),
+        isFeatured: z.boolean(),
         urls: z.object({
             demo: z.string().optional(),
             code: z.string().optional(),
