@@ -1,7 +1,12 @@
 ---
+import { getCollection } from "astro:content";
 import ProjectCard from "./ui/ProjectCard.astro";
 import Button from "./ui/Button.astro";
 import { CircleArrowRight } from "@lucide/astro";
+
+const featuredProjects = await getCollection('projects', ({data}) => {
+    return data.isFeatured === true;
+})
 ---
 
 <section class="py-10 px-8">
@@ -11,7 +16,11 @@ import { CircleArrowRight } from "@lucide/astro";
             <p class="text-sm text-gray-600 dark:text-neutral-300">A lo largo de mi camino como desarrollador, he participado en multiples proyectos, acá te enseño los más importantes para mí</p>
         </hgroup>
         <div class="mt-8 p-2 grid gap-8 tablet:grid-cols-2">
-            <ProjectCard />
+            {
+                featuredProjects.map((project) => (
+                    <ProjectCard project={project} />
+                ))
+            }
         </div>
         <div class="flex p-2 justify-center items-center mt-4 tablet:mt-8">
             <Button type="solid" url="/proyectos">
