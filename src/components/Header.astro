@@ -7,12 +7,15 @@ import Logo from "../assets/Logo.astro"
 
 <header role="banner" class="fixed top-0 w-full z-50 bg-linear-65 from-radiant via-blue-100 to-radiant backdrop-blur-md shadow-2xl shadow-shadow-header dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
     <div class="relative mx-auto flex items-center justify-between px-4 max-w-5xl h-15 md:gap-x-4">
-        <div class="h-18 bg-linear-to-r from-radiant via-light-blue to-radiant my-auto px-8 rounded-b-2xl shadow-xs shadow-gray-400 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
-            <div class="h-25 flex justify-center items-center bg-linear-65 from-radiant via-light-blue to-radiant p-8 rounded-lg shadow-2xl shadow-gray-600 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-red-600">
-                <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-orange-700">
-                    <a href="/">
-                        <Logo class={"animate-fade-in-down"} width={64} height={64} />
-                    </a>
+        
+        <div class="relative self-stretch w-24 shrink-0">
+            <div class="absolute top-0 left-0 h-18 bg-linear-to-r from-radiant via-light-blue to-radiant px-8 rounded-b-2xl shadow-xs shadow-gray-400 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-gray-600">
+                <div class="h-25 flex justify-center items-center bg-linear-65 from-radiant via-light-blue to-radiant p-8 rounded-b-2xl shadow-2xl shadow-gray-600 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 dark:shadow-red-600">
+                    <div class="h-16 w-16 drop-shadow-lg drop-white transition transform-3d duration-300 ease-in hover:scale-105 dark:drop-shadow-orange-700">
+                        <a href="/">
+                            <Logo class={"animate-fade-in-down"} width={64} height={64} />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,6 +100,80 @@ import Logo from "../assets/Logo.astro"
             </div>
         </nav>
     </div>
+    <script is:inline>
+        function initHeader() {
+            const darkToggle = document.getElementById('darkToggle');
+            const darkToggleMobile = document.getElementById('darkToggleMobile');
+            const openMenu = document.getElementById('openMenu');
+            const closeMenu = document.getElementById('closeMenu');
+            const menu = document.getElementById('menu');
+            let isMobileMenuOpen = false;
+            
+            function syncDarkModeIcons() {
+                const isDark = document.documentElement.classList.contains('dark');
+                const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
+                const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
+                
+                if (isDark) {
+                    moonIcons.forEach(icon => icon.classList.remove('hidden'));
+                    sunIcons.forEach(icon => icon.classList.add('hidden'));
+                    document.getElementById('dayText')?.classList.add('hidden');
+                    document.getElementById('nightText')?.classList.remove('hidden');
+                } else {
+                    sunIcons.forEach(icon => icon.classList.remove('hidden'));
+                    moonIcons.forEach(icon => icon.classList.add('hidden'));
+                    document.getElementById('dayText')?.classList.remove('hidden');
+                    document.getElementById('nightText')?.classList.add('hidden');
+                }
+            }
+            
+            function toggleDarkMode() {
+                const html = document.documentElement;
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+                syncDarkModeIcons();
+            }
+            
+            function openMobileMenu() {
+                menu?.classList.remove('hidden');
+                openMenu?.classList.add('hidden');
+                closeMenu?.classList.remove('hidden', 'flex');
+                closeMenu?.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                isMobileMenuOpen = true;
+            }
+            
+            function closeMobileMenu() {
+                menu?.classList.add('hidden');
+                closeMenu?.classList.add('hidden');
+                closeMenu?.classList.remove('flex');
+                openMenu?.classList.remove('hidden');
+                document.body.style.overflow = '';
+                isMobileMenuOpen = false;
+            }
+            
+            // Event listeners
+            darkToggle?.addEventListener('click', toggleDarkMode);
+            darkToggleMobile?.addEventListener('click', toggleDarkMode);
+            openMenu?.addEventListener('click', openMobileMenu);
+            closeMenu?.addEventListener('click', closeMobileMenu);
+            
+            menu?.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 640) closeMobileMenu();
+                });
+            });
+            
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 640) closeMobileMenu();
+            });
+            
+            syncDarkModeIcons();
+            window.closeMobileMenu = closeMobileMenu;
+        }
+
+        document.addEventListener('astro:page-load', initHeader);
+    </script>
 </header>
 
 <style>
@@ -231,79 +308,3 @@ import Logo from "../assets/Logo.astro"
     }
   }
 </style>
-
-<script is:inline>
-  function initHeader() {
-    const darkToggle = document.getElementById('darkToggle');
-    const darkToggleMobile = document.getElementById('darkToggleMobile');
-    const openMenu = document.getElementById('openMenu');
-    const closeMenu = document.getElementById('closeMenu');
-    const menu = document.getElementById('menu');
-    let isMobileMenuOpen = false;
-
-    function syncDarkModeIcons() {
-      const isDark = document.documentElement.classList.contains('dark');
-      const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
-      const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
-
-      if (isDark) {
-        moonIcons.forEach(icon => icon.classList.remove('hidden'));
-        sunIcons.forEach(icon => icon.classList.add('hidden'));
-        document.getElementById('dayText')?.classList.add('hidden');
-        document.getElementById('nightText')?.classList.remove('hidden');
-      } else {
-        sunIcons.forEach(icon => icon.classList.remove('hidden'));
-        moonIcons.forEach(icon => icon.classList.add('hidden'));
-        document.getElementById('dayText')?.classList.remove('hidden');
-        document.getElementById('nightText')?.classList.add('hidden');
-      }
-    }
-
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-      syncDarkModeIcons();
-    }
-
-    function openMobileMenu() {
-      menu?.classList.remove('hidden');
-      openMenu?.classList.add('hidden');
-      closeMenu?.classList.remove('hidden', 'flex');
-      closeMenu?.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-      isMobileMenuOpen = true;
-    }
-
-    function closeMobileMenu() {
-      menu?.classList.add('hidden');
-      closeMenu?.classList.add('hidden');
-      closeMenu?.classList.remove('flex');
-      openMenu?.classList.remove('hidden');
-      document.body.style.overflow = '';
-      isMobileMenuOpen = false;
-    }
-
-    // Event listeners
-    darkToggle?.addEventListener('click', toggleDarkMode);
-    darkToggleMobile?.addEventListener('click', toggleDarkMode);
-    openMenu?.addEventListener('click', openMobileMenu);
-    closeMenu?.addEventListener('click', closeMobileMenu);
-
-    menu?.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 640) closeMobileMenu();
-      });
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 640) closeMobileMenu();
-    });
-
-    syncDarkModeIcons();
-    window.closeMobileMenu = closeMobileMenu;
-  }
-
-  // ✅ Corre en carga inicial Y en cada navegación con ClientRouter
-  document.addEventListener('astro:page-load', initHeader);
-</script>
