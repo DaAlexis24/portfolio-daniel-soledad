@@ -1,14 +1,50 @@
 ---
 import { getCollection } from "astro:content";
+
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import HeaderPage from "../../components/ui/HeaderPage.astro";
 import ProjectFilter from "../../components/ui/ProjectFilter.astro";
+import type { SvgComponent } from "astro/types";
+
+import All from '../../assets/svg/all.svg';
+import FullStack from '../../assets/svg/fullstack.svg';
+import Frontend from '../../assets/svg/front.svg';
+import Backend from '../../assets/svg/backend.svg';
+import Dam from '../../assets/svg/multiplatforms.svg';
 
 const projects = await getCollection('projects')
 const path = Astro.url.pathname
 const fullPath = path.split('/')
 fullPath.shift()
+
+interface Item {
+    label: string,
+    icon: SvgComponent
+}
+
+const itemsLink: Item[] = [
+    {
+        label: 'Todos',
+        icon: All
+    },
+    {
+        label: 'FullStack',
+        icon: FullStack
+    },
+    {
+        label: 'Frontend',
+        icon: Frontend
+    },
+    {
+        label: 'Backend',
+        icon: Backend
+    },
+    {
+        label: 'Multiplataformas',
+        icon: Dam
+    }
+]
 
 export const prerender = true
 ---
@@ -17,6 +53,6 @@ export const prerender = true
         <Breadcrumbs fullPath={fullPath} label="Proyectos" />
     </HeaderPage>
     <div class="container mx-auto p-5 tablet:p-10">
-        <ProjectFilter />
+        <ProjectFilter itemsList={itemsLink} />
     </div>
 </Layout>
