@@ -23,7 +23,7 @@ export const prerender = true
 
 const {Content} = await render(project)
 
-const fullPath = path.split('/')
+const fullPath = path.split('/').filter(Boolean)
 fullPath.shift()
 ---
 
