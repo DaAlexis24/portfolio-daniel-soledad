@@ -16,7 +16,6 @@ import Dam from '../../assets/svg/multiplatforms.svg';
 const projects = await getCollection('projects')
 const path = Astro.url.pathname
 const fullPath = path.split('/').filter(Boolean)
-fullPath.shift()
 
 interface Item {
     label: string,
