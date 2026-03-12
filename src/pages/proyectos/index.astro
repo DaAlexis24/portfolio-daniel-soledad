@@ -53,12 +53,12 @@ export const prerender = true
     <HeaderPage title="Proyectos">
         <Breadcrumbs fullPath={fullPath} label="Proyectos" />
     </HeaderPage>
-    <div class="container mx-auto p-10 tablet:p-20">
+    <div class="container mx-auto p-5 tablet:p-10 lg:p-20">
         <div class="flex flex-col gap-4 tablet:flex-row">
             <div class="tablet:w-50 shrink-0">
                 <ProjectFilter itemsList={itemsLink} />
             </div>
-            <div class="flex-1 grid tablet:grid-cols-2 gap-4">
+            <div class="flex-1 grid md:grid-cols-2 gap-4">
                 {
                     projects.map((project) => (
                         <ProjectCardPage project={project} />

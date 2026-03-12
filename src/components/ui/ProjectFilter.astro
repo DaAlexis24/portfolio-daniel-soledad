@@ -23,7 +23,7 @@ const {itemsList} = Astro.props
             return (
             <li class="w-full border-b flex border-default px-3 last:border-b-0">
                 <div class="flex justify-around items-center px-3">
-                    <input id={`list-radio-${item.label}`} type="radio" value={item.label} name="list-radio" class="w-4 h-4 text-plate bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
+                    <input id={`list-radio-${item.label}`} type="radio" value={item.label} name="list-radio" class="cursor-pointer w-4 h-4 text-plate bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
                     <label for={`list-radio-${item.label}`} class="w-full py-3 select-none ms-2 text-sm font-medium text-heading">{item.label}</label>
                     <Icon class="w-6 h-6 text-bright-blue dark:text-orange"/>
                 </div>
