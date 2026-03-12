@@ -10,9 +10,9 @@ interface Props {
 
 const {project} = Astro.props
 const {slug, data} = project
-const {title, img, description, category, stack, urls} = data
+const {title, img, description, stack, urls} = data
 ---
-<article aria-label={title} data-category={category} class="group flex w-full flex-col p-8 border max-w-sm tablet:max-w-lg lg:max-w-2xl mx-auto overflow-hidden rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/30 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+<article aria-label={title} class="group flex w-full flex-col p-8 border max-w-sm tablet:max-w-lg lg:max-w-2xl mx-auto overflow-hidden rounded-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/30 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
     <a href={`proyectos/${slug}`} class="mb-2">
         <Image transition:name={`img-${slug}`} src={`/${img}`} alt={title} width={600} height={300} class="w-full object-cover rounded-2xl group-hover:scale-102 group-hover:duration-400" priority densities={[1.5, 2]} format="avif" quality="mid"/>
     </a>

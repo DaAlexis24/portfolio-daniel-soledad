@@ -6,13 +6,14 @@ import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import HeaderPage from "../../components/ui/HeaderPage.astro";
 import ProjectFilter from "../../components/ui/ProjectFilter.astro";
 import type { SvgComponent } from "astro/types";
+import ProjectCard from "../../components/ui/ProjectCard.astro";
+import ProjectCardPage from "../../components/ui/ProjectCardPage.astro";
 
 import All from '../../assets/svg/all.svg';
 import FullStack from '../../assets/svg/fullstack.svg';
 import Frontend from '../../assets/svg/front.svg';
 import Backend from '../../assets/svg/backend.svg';
 import Dam from '../../assets/svg/multiplatforms.svg';
-import ProjectCard from "../../components/ui/ProjectCard.astro";
 
 const projects = await getCollection('projects')
 const path = Astro.url.pathname
@@ -52,14 +53,18 @@ export const prerender = true
     <HeaderPage title="Proyectos">
         <Breadcrumbs fullPath={fullPath} label="Proyectos" />
     </HeaderPage>
-    <div class="grid gap-4 container mx-auto p-5 tablet:p-10">
-        <ProjectFilter itemsList={itemsLink} />
-        <div class="grid tablet:grid-cols-2 gap-2">
-            {
-                projects.map((project) => (
-                    <ProjectCard project={project} />
-                ))
-            }
+    <div class="container mx-auto p-10 tablet:p-20">
+        <div class="flex flex-col gap-4 tablet:flex-row">
+            <div class="tablet:w-50 shrink-0">
+                <ProjectFilter itemsList={itemsLink} />
+            </div>
+            <div class="flex-1 grid tablet:grid-cols-2 gap-4">
+                {
+                    projects.map((project) => (
+                        <ProjectCardPage project={project} />
+                    ))
+                }
+            </div>
         </div>
     </div>
 </Layout>

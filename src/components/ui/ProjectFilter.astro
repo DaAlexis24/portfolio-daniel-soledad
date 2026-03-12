@@ -15,7 +15,7 @@ export interface Props {
 const {itemsList} = Astro.props
 ---
 
-<h3 class="font-semibold">Tipo de proyecto</h3>
+<h3 class="mb-4 font-semibold">Tipo de proyecto</h3>
 <ul class="grid grid-cols-2 md:grid-cols-3 tablet:grid-cols-1 w-full tablet:w-fit border border-default rounded-2xl">
     {
         itemsList.map((item) => {

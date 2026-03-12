@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { Expand, Github } from "@lucide/astro";
+
+interface Props {
+    project: CollectionEntry<'projects'>
+}
+
+const {project} = Astro.props
+const {slug, data} = project
+const {title, img, description, category, stack, urls} = data
+---
+<article aria-label={title} data-category={category} class="flex flex-col group mx-auto p-6 rounded-2xl overflow-hidden border-2 max-w-sm tablet:max-w-lg lg:max-w-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/30 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+    <div class="relative flex items-center justify-center mb-4">
+        <Image src={`/${img}`} alt={title} width={400} height={230} loading="eager" class="object-contain rounded-2xl" />
+        <div class="absolute w-full px-6 transition duration-300 opacity-0 group-hover:opacity-100 bottom-5">
+            <div class="flex justify-center gap-x-5">
+                <a href={`proyectos/${slug}`} transition:name={`img-${slug}`} rel="noopener noreferrer" title="Abre aquí" class="flex items-center p-2 rounded-full bg-radiant dark:bg-light-dire shadow-md transition hover:scale-110">
+                    <Expand size={20}/>
+                </a>
+                <a href={urls.code} rel="noopener noreferrer" title="GitHub" target="_blank" class="flex items-center p-2 rounded-full bg-radiant dark:bg-light-dire shadow-md transition hover:scale-110">
+                    <Github size={20}/>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col px-4 justify-center items-center">
+        <h3 class="mb-4 text-2xl leading-tight text-center">{title}</h3>
+        <p class="mb-4 text-medium-gray dark:text-plata text-sm">{description}</p>
+        <div class="flex grow gap-4 mb-6">
+            {stack.map((item) => {
+                const isThemed = typeof item === 'object';
+                const name = isThemed ? item.light.replace(/\.[^.]+$/, '') : item.replace(/\.[^.]+$/, '');
+                        
+                return isThemed ? (
+                    <>
+                        <img src={`/${item.light}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={name} class="h-6 w-6 object-scale-down block dark:hidden" />
+                        <img src={`/${item.dark}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={name} class="h-6 w-6 object-scale-down hidden dark:block" />
+                    </>
+                    ) : (
+                    <img src={`/${item}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={item.replace(/\.[^.]+$/, '')} class="h-6 w-6 object-scale-down" />
+                );
+            })}
+        </div>
+    </div>
+</article>
