@@ -8,10 +8,10 @@ interface Props {
 }
 
 const {project} = Astro.props
-const {slug, data} = project
+const {slug, data, id} = project
 const {title, img, description, category, stack, urls} = data
 ---
-<article aria-label={title} data-category={category} class="flex flex-col group mx-auto p-6 rounded-2xl overflow-hidden border-2 max-w-sm tablet:max-w-lg lg:max-w-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/30 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
+<article id={id} aria-label={title} data-category={category.toLowerCase()} class="flex flex-col group mx-auto p-6 rounded-2xl overflow-hidden border-2 max-w-sm tablet:max-w-lg lg:max-w-2xl bg-light-blue dark:bg-menu-dota border-plomo dark:border-acero transition-all duration-300 ease-in hover:-translate-y-1 hover:border-sea-blue hover:shadow-xl/30 hover:shadow-radiant hover:dark:border-dire hover:dark:shadow-light-dire">
     <div class="relative flex items-center justify-center mb-4">
         <Image src={`/${img}`} alt={title} width={400} height={230} loading="eager" class="object-contain rounded-2xl" />
         <div class="absolute w-full px-6 transition duration-300 opacity-0 group-hover:opacity-100 bottom-5">

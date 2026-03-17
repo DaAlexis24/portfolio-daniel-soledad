@@ -6,8 +6,8 @@ import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import HeaderPage from "../../components/ui/HeaderPage.astro";
 import ProjectFilter from "../../components/ui/ProjectFilter.astro";
 import type { SvgComponent } from "astro/types";
-import ProjectCard from "../../components/ui/ProjectCard.astro";
 import ProjectCardPage from "../../components/ui/ProjectCardPage.astro";
+import { BookSearch } from "@lucide/astro"; 
 
 import All from '../../assets/svg/all.svg';
 import FullStack from '../../assets/svg/fullstack.svg';
@@ -64,7 +64,115 @@ export const prerender = true
                         <ProjectCardPage project={project} />
                     ))
                 }
+                <div id="empty-state" style="display:none;" class="hidden-state flex flex-col items-center justify-center py-16 gap-4 col-span-full">
+                    <BookSearch size={40}/>
+                    <p class="text-lg text-medium text-sea-blue dark:text-plata">Estamos trabajando en proyectos de esta categoría</p>
+                </div>
             </div>
         </div>
     </div>
 </Layout>
+<script is:inline>
+  (function () {
+    const INITIAL_CARDS = 8;
+    const VISIBLE_PROJECT = 'p-showed';
+    const HIDDEN_PROJECT = 'p-hidden';
+    const HIDDEN_TIMEOUT = 300;
+
+    let projectsShowed = INITIAL_CARDS;
+    let activeFilter = 'todos';
+    let cards = [];
+    let filterBoxes = [];
+
+    function queryElements() {
+      cards = Array.from(document.querySelectorAll('article[id]'));
+      // Ahora seleccionamos los <li> con clase filter-checkbox
+      filterBoxes = Array.from(document.querySelectorAll('li.filter-checkbox'));
+    }
+
+    function sectionEmptyState(isEmpty){
+        const emptyState = document.getElementById('empty-state');
+        if(!emptyState) return;
+        emptyState.style.display = isEmpty ? 'flex' : 'none';
+    }
+
+    function showCard(card) {
+      card.style.display = 'flex';
+      requestAnimationFrame(() => {
+        card.classList.remove(HIDDEN_PROJECT);
+        card.classList.add(VISIBLE_PROJECT);
+      });
+    }
+
+    function hideCard(card) {
+      card.classList.remove(VISIBLE_PROJECT);
+      card.classList.add(HIDDEN_PROJECT);
+      setTimeout(() => {
+        if (card.classList.contains(HIDDEN_PROJECT)) {
+          card.style.display = 'none';
+        }
+      }, HIDDEN_TIMEOUT);
+    }
+
+    function setActiveButton(activeBox) {
+      filterBoxes.forEach((box) => {
+        // Desmarcamos el input radio dentro de cada li
+        const input = box.querySelector('input[type="radio"]');
+        if (input) input.checked = false;
+        box.classList.remove('active');
+      });
+      if (activeBox) {
+        const input = activeBox.querySelector('input[type="radio"]');
+        if (input) input.checked = true;
+        activeBox.classList.add('active');
+      }
+    }
+
+    function applyFilter(filter) {
+      activeFilter = filter ?? 'todos';
+      cards = Array.from(document.querySelectorAll('article[id]'));
+
+      const filteredCards = cards.filter((card) => {
+        if (activeFilter === 'todos') return true;
+        const category = card.dataset.category?.toLowerCase();
+        return category === activeFilter;
+      });
+
+      cards.forEach((card) => hideCard(card));
+      filteredCards.forEach((card, i) => {
+        if (i < projectsShowed) showCard(card);
+      });
+
+      sectionEmptyState(filteredCards.length === 0)
+    }
+
+    function attachFilterEvents() {
+      if (!filterBoxes.length) return;
+
+      filterBoxes.forEach((box) => {
+        box.addEventListener('click', () => {
+          projectsShowed = INITIAL_CARDS;
+          // Leemos el data-filter del <input> que está dentro del <li>
+          const input = box.querySelector('input[type="radio"]');
+          const filter = input?.dataset.filter || 'todos';
+          setActiveButton(box);
+          applyFilter(filter);
+        });
+      });
+
+      // Activamos "todos" al inicio si existe, si no el primero
+      const allBox = document.querySelector('li.filter-checkbox input[data-filter="todos"]')?.closest('li');
+      const firstBox = filterBoxes[0];
+      setActiveButton(allBox ?? firstBox);
+    }
+
+    function init() {
+      queryElements();
+      attachFilterEvents();
+      applyFilter('todos');
+    }
+
+    document.addEventListener('astro:page-load', init);
+    window.addEventListener('load', init);
+  })();
+</script>
