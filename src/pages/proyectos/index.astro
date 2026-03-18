@@ -64,8 +64,8 @@ export const prerender = true
                         <ProjectCardPage project={project} />
                     ))
                 }
-                <div id="empty-state" style="display:none;" class="hidden-state flex flex-col items-center justify-center py-16 gap-4 col-span-full">
-                    <BookSearch size={40}/>
+                <div id="empty-state" style="display:none;" class="hidden-state flex flex-col items-center justify-center py-16 gap-4 col-span-full text-bright-blue dark:text-dire">
+                    <BookSearch size={50}/>
                     <p class="text-lg text-medium text-sea-blue dark:text-plata">Estamos trabajando en proyectos de esta categoría</p>
                 </div>
             </div>
@@ -85,8 +85,9 @@ export const prerender = true
     let filterBoxes = [];
 
     function queryElements() {
+        // Seleccionamos los articles
       cards = Array.from(document.querySelectorAll('article[id]'));
-      // Ahora seleccionamos los <li> con clase filter-checkbox
+      // Selección de inputs
       filterBoxes = Array.from(document.querySelectorAll('li.filter-checkbox'));
     }
 
@@ -116,7 +117,7 @@ export const prerender = true
 
     function setActiveButton(activeBox) {
       filterBoxes.forEach((box) => {
-        // Desmarcamos el input radio dentro de cada li
+        // Seleccionamos solos los input de los li
         const input = box.querySelector('input[type="radio"]');
         if (input) input.checked = false;
         box.classList.remove('active');
@@ -152,7 +153,7 @@ export const prerender = true
       filterBoxes.forEach((box) => {
         box.addEventListener('click', () => {
           projectsShowed = INITIAL_CARDS;
-          // Leemos el data-filter del <input> que está dentro del <li>
+          // Leemos el data-filter de los <input> 
           const input = box.querySelector('input[type="radio"]');
           const filter = input?.dataset.filter || 'todos';
           setActiveButton(box);
