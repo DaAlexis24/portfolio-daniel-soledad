@@ -20,8 +20,8 @@ const {title, professions, abstract} = hero;
             </hgroup>
             <p class=" text-gray-500 tablet:text-lg dark:text-neutral-200">{abstract}</p>
             <div class="inline-flex justify-center items-center py-2 space-x-5 overflow-hidden">
-                <Button type='solid' url='/contacto'>
-                    Contácteme <UserSearchIcon size={16}/>
+                <Button type='solid' url='/sobre-mi'>
+                    Conóceme <UserSearchIcon size={16}/>
                 </Button>
                 {socialLinks.map((social)=> (
                     <a href={social.url} target="_blank"  rel="noopener noreferrer" title={social.site}>
