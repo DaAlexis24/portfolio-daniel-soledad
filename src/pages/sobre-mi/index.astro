@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+import HeaderPage from "../../components/ui/HeaderPage.astro";
+
+import {aboutMePageInfo} from '../../config/info'
+
+const {title, description, keywords} = aboutMePageInfo
+
+const path = Astro.url.pathname
+const fullPath = path.split('/').filter(Boolean)
+
+export const prerender = true
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+    <HeaderPage title="Sobre Mi">
+        <Breadcrumbs fullPath={fullPath} label="Sobre mí"/>
+    </HeaderPage>
+</Layout>
