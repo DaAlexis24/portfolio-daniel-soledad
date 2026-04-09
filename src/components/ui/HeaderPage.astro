@@ -6,11 +6,11 @@ interface Props {
 const {title} = Astro.props
 ---
 <section class="relative bg-linear-to-tr from-sky-600 via-emerald-400 to-lime-500 dark:bg-linear-to-bl dark:from-red-900 dark:via-orange-700 dark:to-orange-600">
-<div class="container max-w-6xl mx-auto p-16 tablet:p-20 lg:p-25">
+<div class="container max-w-6xl mx-auto p-13 tablet:p-16 lg:p-20">
     <div class="mb-4">
         <slot />
     </div>
-    <h1 class="text-4xl tablet:text-6xl lg:text-8xl text-center font-extrabold tracking-wide text-white!">
+    <h1 class="text-5xl tablet:text-6xl lg:text-8xl text-center font-extrabold tracking-wide text-white!">
         {title}
     </h1>
 </div>

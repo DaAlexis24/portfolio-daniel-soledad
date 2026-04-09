@@ -2,8 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import HeaderPage from "../../components/ui/HeaderPage.astro";
+import MyPhoto from "../../assets/MyPhoto.astro";
 
 import {aboutMePageInfo} from '../../config/info'
+import SoftSkillsRating from "../../components/about/SoftSkillsRating.astro";
 
 const {title, description, keywords} = aboutMePageInfo
 
@@ -17,4 +19,24 @@ export const prerender = true
     <HeaderPage title="Sobre Mi">
         <Breadcrumbs fullPath={fullPath} label="Sobre mí"/>
     </HeaderPage>
+    <div class="container mx-auto p-5 tablet:p-10 lg:p-20">
+        <section class="max-w-6xl grid grid-cols-1 tablet:grid-cols-2 gap-4 justify-center items-center">
+            <div class="flex justify-center items-center">
+                <MyPhoto />
+            </div>
+            <div class="flex flex-col justify-center items-center text-center gap-2 tablet:text-left">
+                <h2 class="text-wrap text-2xl tablet:text-4xl lg:text-5xl"></h2>
+                <div class="prose text-medium-gray dark:text-plomo">
+                    <p>
+                        Tengo 1 año de experiencia realizando distintas aplicaciones de software como programador, siendo parte de las reuniones con distintos clientes buscando conocer sus necesidades y requerimientos, con esto se inicia la planificación del proceso de desarrollo y la delegación de obligaciones.
+                    </p>
+                    <p>
+                        Me especializo en el diseño de interfaz, el uso de la metodología MERN para proyectos escalables y prefiero Headless CRM para proyectos más potentes. Suelo organizarme de la delegación de funciones, la construcción del código y la comunicación con los clientes.
+                    </p>
+                    <blockquote class="text-plomo dark:text-medium-gray">Aprende a vivir, para poder seguir aprendiendo</blockquote>
+                </div>
+            </div> 
+        </section>
+        <SoftSkillsRating />
+    </div>
 </Layout>

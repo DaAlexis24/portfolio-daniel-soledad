@@ -31,7 +31,14 @@
                 "PostgreSQL",
                 "Git"
             ]
-        }
+        },
+        "softSkills" : [
+            {"skill": "Resolución de Problemas", "level": 4},
+            {"skill": "Curiosidad", "level": 5},
+            {"skill": "Autogestión", "level": 3},
+            {"skill": "Trabajo en Equipo", "level": 5},
+            {"skill": "Comunicación", "level": 4}
+        ]
     },
     "experienceInfo": {
         "info": [

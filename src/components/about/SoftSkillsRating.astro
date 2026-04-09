@@ -1,0 +1,111 @@
+---
+import {about} from '../../collections/info.json'
+import {HeartHandshake} from '@lucide/astro'
+
+const {softSkills} = about
+
+interface Skill {
+    skill: string;
+    level: number;
+}
+
+interface Props{
+    max?: number;
+    skills?: Skill[]
+}
+
+const {max = 5, skills = softSkills} = Astro.props
+---
+<div class="bg-light-blue dark:bg-menu-dota p-5 border border-plomo dark:border-acero rounded-xl max-w-96">
+    <h3 class="text-2xl tablet:text-4xl tracking-wide uppercase">Soft Skill</h3>
+    <ul class="list-none m-0 p-0">
+        {
+            skills.map((skill) => (
+                <li class="flex gap-2 items-center justify-between py-1">
+                    <div class="p-2 rounded-full bg-dire dark:bg-bright-blue text-light-dire flex items-center justify-center shrink-0" aria-hidden="true">
+                        <HeartHandshake size={10} />
+                    </div>
+                    <span class="text-lg text-medium-gray dark:text-plata">{skill.skill}</span>
+                    <div class="diamonds" role="group" aria-label={`Valoración de ${skill.skill}`}>
+                        {Array.from({length: max}, (_ , i) => {
+                            const idx = i + 1;
+                            return (
+                                <button class={`diamond-btn`} data-index={idx} data-value={skill.level} aria-label={`${idx} de ${max}`} aria-pressed={idx <= skill.level ? "true" : "false"}>
+                                    <span class={`diamond ${idx <= skill.level ? "diamond--filled" : ""}`}/>
+                                </button>
+                            )
+                        })}
+                    </div>
+                </li>
+            ))
+        }
+    </ul>
+    <script is:inline>
+        document.querySelectorAll<HTMLElement>('li').forEach((row)=> {
+            const buttons = row.querySelectorAll<HTMLButtonElement>('.diamond-btn')
+            let currentValue = parseInt(buttons[0]?.dataset.value ?? "0")
+
+            function updateDiamonds(active) {
+                buttons.forEach((btn, i) => {
+                    const diamond = btn.querySelector('.diamond');
+                    const filled= i + 1 <= active;
+                    diamond.classList.toggle("diamond--filled", filled);
+                    btn.setAttribute("aria-pressed", filled ? "true" : "false");
+                });
+            }
+
+            buttons.forEach((btn) => {
+                const idx = parseInt(btn.dataset.index ?? "0");
+
+                btn.addEventListener("click", () => {
+                    currentValue = currentValue === idx ? 0 : idx;
+                    updateDiamonds(currentValue);
+                });
+
+                btn.addEventListener("mouseenter", () => updateDiamonds(idx));
+                btn.addEventListener("mouseleave", () => updateDiamonds(currentValue))
+            })
+        })
+    </script>
+</div>
+
+<style>
+.diamonds {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+.diamond-btn {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+ 
+.diamond {
+    display: block;
+    width: 11px;
+    height: 11px;
+    transform: rotate(45deg);
+    border: 1.5px solid #9ca3af;
+    background: transparent;
+    transition: background 0.12s, border-color 0.12s;
+}
+ 
+.diamond--filled {
+    background: #cc2200;
+    border-color: #cc2200;
+}
+ 
+.diamond-btn:hover .diamond,
+.diamonds:has(.diamond-btn:nth-child(-n+var(--hovered)) .diamond) {
+    border-color: #cc2200;
+}
+</style>
+
