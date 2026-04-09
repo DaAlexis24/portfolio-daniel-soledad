@@ -16,16 +16,18 @@ interface Props{
 
 const {max = 5, skills = softSkills} = Astro.props
 ---
-<div class="bg-light-blue dark:bg-menu-dota p-5 border border-plomo dark:border-acero rounded-xl max-w-96">
-    <h3 class="text-2xl tablet:text-4xl tracking-wide uppercase">Soft Skill</h3>
+<div class="bg-light-blue dark:bg-menu-dota p-5 border border-plomo dark:border-acero rounded-xl max-w-lg">
+    <h3 class="text-2xl tablet:text-4xl tracking-wide uppercase mb-4">Soft Skill</h3>
     <ul class="list-none m-0 p-0">
         {
             skills.map((skill) => (
-                <li class="flex gap-2 items-center justify-between py-1">
-                    <div class="p-2 rounded-full bg-dire dark:bg-bright-blue text-light-dire flex items-center justify-center shrink-0" aria-hidden="true">
-                        <HeartHandshake size={10} />
+                <li class="skill-row flex gap-2 items-center justify-between py-1">
+                    <div class="flex gap-2 items-center justify-center">
+                        <div class="p-2 rounded-full dark:bg-dire bg-bright-blue text-hard-radiant dark:text-orange flex justify-center items-center shrink-0" aria-hidden="true">
+                            <HeartHandshake size={20} />
+                        </div>
+                        <span class="text-lg text-medium-gray dark:text-plata">{skill.skill}</span>
                     </div>
-                    <span class="text-lg text-medium-gray dark:text-plata">{skill.skill}</span>
                     <div class="diamonds" role="group" aria-label={`Valoración de ${skill.skill}`}>
                         {Array.from({length: max}, (_ , i) => {
                             const idx = i + 1;
@@ -41,35 +43,37 @@ const {max = 5, skills = softSkills} = Astro.props
         }
     </ul>
     <script is:inline>
-        document.querySelectorAll<HTMLElement>('li').forEach((row)=> {
-            const buttons = row.querySelectorAll<HTMLButtonElement>('.diamond-btn')
-            let currentValue = parseInt(buttons[0]?.dataset.value ?? "0")
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll<HTMLElement>('.skill-row').forEach((row)=> {
+                const buttons = row.querySelectorAll<HTMLButtonElement>('.diamond-btn')
+                let currentValue = parseInt(buttons[0]?.dataset.value ?? "0")
+                
+                function updateDiamonds(active) {
+                    buttons.forEach((btn, i) => {
+                        const diamond = btn.querySelector('.diamond');
+                        const filled= i + 1 <= active;
+                        diamond.classList.toggle("diamond--filled", filled);
+                        btn.setAttribute("aria-pressed", filled ? "true" : "false");
+                    });
+                }
 
-            function updateDiamonds(active) {
-                buttons.forEach((btn, i) => {
-                    const diamond = btn.querySelector('.diamond');
-                    const filled= i + 1 <= active;
-                    diamond.classList.toggle("diamond--filled", filled);
-                    btn.setAttribute("aria-pressed", filled ? "true" : "false");
-                });
-            }
+                buttons.forEach((btn) => {
+                    const idx = parseInt(btn.dataset.index ?? "0");
 
-            buttons.forEach((btn) => {
-                const idx = parseInt(btn.dataset.index ?? "0");
+                    btn.addEventListener("click", () => {
+                        currentValue = currentValue === idx ? 0 : idx;
+                        updateDiamonds(currentValue);
+                    });
 
-                btn.addEventListener("click", () => {
-                    currentValue = currentValue === idx ? 0 : idx;
-                    updateDiamonds(currentValue);
-                });
-
-                btn.addEventListener("mouseenter", () => updateDiamonds(idx));
-                btn.addEventListener("mouseleave", () => updateDiamonds(currentValue))
+                    btn.addEventListener("mouseenter", () => updateDiamonds(idx));
+                    btn.addEventListener("mouseleave", () => updateDiamonds(currentValue))
+                })
             })
         })
     </script>
 </div>
 
-<style>
+<style is:global>
 .diamonds {
     display: flex;
     align-items: center;
@@ -85,7 +89,7 @@ const {max = 5, skills = softSkills} = Astro.props
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
+    cursor: auto;
 }
  
 .diamond {
@@ -93,19 +97,51 @@ const {max = 5, skills = softSkills} = Astro.props
     width: 11px;
     height: 11px;
     transform: rotate(45deg);
-    border: 1.5px solid #9ca3af;
+    border: 2px solid #9ca3af;
     background: transparent;
     transition: background 0.12s, border-color 0.12s;
 }
  
 .diamond--filled {
-    background: #cc2200;
-    border-color: #cc2200;
+    position: relative;
+    background: var(--color-medium-gray);
+    border-color: var(--color-medium-gray);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
- 
-.diamond-btn:hover .diamond,
-.diamonds:has(.diamond-btn:nth-child(-n+var(--hovered)) .diamond) {
-    border-color: #cc2200;
+
+.diamond--filled::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.dark .diamond--filled {
+    background: var(--color-plata);
+    border-color: var(--color-plata);
+}
+
+.diamond--filled:hover {
+    background-color: var(--color-medium-gray);
+    box-shadow: 0 0 20px rgba(228, 223, 226, 0.7), 0 0 40px rgba(54, 121, 236, 0.7);
+}
+
+.dark .diamond--filled:hover {
+    background-color: var(--color-plata);
+    box-shadow: 0 0 20px rgba(228, 223, 226, 0.7), 0 0 40px rgba(230, 58, 58, 0.7);
+}
+
+.btn-brillante:hover::before {
+        animation: brillo 0.8s forwards;
+}
+
+@keyframes brillo {
+    0% { left: -75%; }
+    100% { left: 125%; }
 }
 </style>
 
