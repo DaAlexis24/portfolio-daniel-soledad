@@ -44,8 +44,8 @@ const {max = 5, skills = softSkills} = Astro.props
     </ul>
     <script is:inline>
         document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll<HTMLElement>('li').forEach((row)=> {
-                const buttons = row.querySelectorAll<HTMLButtonElement>('.diamond-btn')
+            document.querySelectorAll('.skill-row').forEach((row)=> {
+                const buttons = row.querySelectorAll('.diamond-btn')
                 let currentValue = parseInt(buttons[0]?.dataset.value ?? "0")
                 
                 function updateDiamonds(active) {
