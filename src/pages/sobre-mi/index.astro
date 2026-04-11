@@ -8,6 +8,7 @@ import {aboutMePageInfo} from '../../config/info'
 import SoftSkillsRating from "../../components/about/SoftSkillsRating.astro";
 import Blockquote from "../../components/about/Blockquote.astro";
 import TechStack from "../../components/about/TechStack.astro";
+import Experience from "../../components/Experience.astro";
 
 const {title, description, keywords} = aboutMePageInfo
 
@@ -48,9 +49,10 @@ export const prerender = true
             </div> 
         </section>
         <Blockquote quote={blockquote.quote} author={blockquote.author} />
-        <section class="max-w-6xl mx-auto grid grid-cols-1 tablet:grid-cols-2 gap-6 place-items-center my-10">
+        <section class="max-w-6xl mx-auto grid grid-cols-1 tablet:grid-cols-2 gap-6 place-items-center">
             <SoftSkillsRating />
             <TechStack />
         </section>
+        <Experience />
     </div>
 </Layout>
