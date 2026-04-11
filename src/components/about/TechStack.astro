@@ -5,9 +5,9 @@ const techs = ["astro.svg","nextjs.svg","nodejs.svg","prestashop.svg","tailwindc
 
 techs.slice().sort((a,b) => a.localeCompare(b, 'en', {sensitivity: 'base'}))
 ---
-<div class="bg-light-blue dark:bg-menu-dota p-6 border border-plomo dark:border-acero rounded-xl max-w-xl hover:transition-all hover:scale-105">
+<div class="bg-light-blue dark:bg-menu-dota p-6 border border-plomo dark:border-acero h-full max-w-xl rounded-xl hover:transition-all hover:scale-105">
     <h3 class="text-2xl tablet:text-4xl tracking-wide uppercase mb-4">Tech Stack</h3>
-    <div class="flex flex-wrap gap-4">
+    <div class="grid grid-cols-6 gap-4">
         {techs.map((tech) => {
             const nameTech = tech.charAt(0).toUpperCase() + tech.slice(1).replace(/_|#|-|@|<>/g, " ")
             const finalName = nameTech.split('.')[0]
