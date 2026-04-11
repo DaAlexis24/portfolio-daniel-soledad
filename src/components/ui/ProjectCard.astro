@@ -30,7 +30,7 @@ const {title, img, description, stack, urls} = data
                     <img src={`/${item.dark}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={name} class="h-7 w-7 object-scale-down hidden dark:block" />
                 </>
                 ) : (
-                <img src={`/${item}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('-')[0]} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
+                <img src={`/${item}`} title={name.charAt(0).toUpperCase() + name.slice(1).split('.')[0]} alt={item.replace(/\.[^.]+$/, '')} class="h-7 w-7 object-scale-down" />
                 );
             })}
         </div>

@@ -23,21 +23,23 @@
                 "Node.js",
                 "TypeScript",
                 "Java",
-                "VBA",
+                "Visual Studio: VBA",
                 "Python",
                 "React",
                 "Astro",
                 "Strapi",
                 "PostgreSQL",
-                "Git"
+                "Git",
+                "Prestashop",
+                "Netlify"
             ]
         },
-        "softSkills" : [
-            {"skill": "Resolución de Problemas", "level": 4},
-            {"skill": "Curiosidad", "level": 5},
-            {"skill": "Autogestión", "level": 3},
-            {"skill": "Trabajo en Equipo", "level": 5},
-            {"skill": "Comunicación", "level": 4}
+        "softSkills": [
+            { "skill": "Resolución de Problemas", "level": 4 },
+            { "skill": "Curiosidad", "level": 5 },
+            { "skill": "Autogestión", "level": 3 },
+            { "skill": "Trabajo en Equipo", "level": 5 },
+            { "skill": "Comunicación", "level": 4 }
         ]
     },
     "experienceInfo": {

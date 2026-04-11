@@ -7,6 +7,7 @@ import MyPhoto from "../../assets/MyPhoto.astro";
 import {aboutMePageInfo} from '../../config/info'
 import SoftSkillsRating from "../../components/about/SoftSkillsRating.astro";
 import Blockquote from "../../components/about/Blockquote.astro";
+import TechStack from "../../components/about/TechStack.astro";
 
 const {title, description, keywords} = aboutMePageInfo
 
@@ -49,7 +50,7 @@ export const prerender = true
         <Blockquote quote={blockquote.quote} author={blockquote.author} />
         <section class="max-w-6xl grid grid-cols-1 tablet:grid-cols-2 gap-8 place-items-center my-10">
             <SoftSkillsRating />
-            <div>Bloque 2</div>
+            <TechStack />
         </section>
     </div>
 </Layout>

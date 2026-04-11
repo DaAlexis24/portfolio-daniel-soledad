@@ -1,0 +1,19 @@
+---
+import {about} from '../../collections/info.json'
+
+const techs = ["astro.svg","nextjs.svg","nodejs.svg","prestashop.svg","tailwindcss.svg","typescript.svg","git.svg","visual-studio.svg", "strapi.svg", "python.svg", "java.svg", "netlify.svg", "postgresql.svg"]
+
+techs.slice().sort((a,b) => a.localeCompare(b, 'en', {sensitivity: 'base'}))
+---
+<div class="bg-light-blue dark:bg-menu-dota p-6 border border-plomo dark:border-acero rounded-xl max-w-xl hover:transition-all hover:scale-105">
+    <h3 class="text-2xl tablet:text-4xl tracking-wide uppercase mb-4">Tech Stack</h3>
+    <div class="flex flex-wrap gap-4">
+        {techs.map((tech) => {
+            const nameTech = tech.charAt(0).toUpperCase() + tech.slice(1).replace(/_|#|-|@|<>/g, " ")
+            const finalName = nameTech.split('.')[0]
+            return (
+                <img src={`/${tech}`} title={finalName} alt={nameTech} class="h-10 w-10 object-scale-down drop-shadow-acero"/>
+            )
+        })}
+    </div>
+</div>
