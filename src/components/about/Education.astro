@@ -1,0 +1,10 @@
+---
+import Carousel from "../ui/Carousel.astro"
+import {gallery} from '../../collections/info.json' 
+---
+<section class="py-10 px-8">
+    <div class="maw-w-7xl mx-auto">
+        <h2 class="text-3xl mb-4 tablet:text-4xl lg:text-6xl">Mis Certificados</h2>
+        <Carousel gallery={gallery} id="carousel-certificates" />
+    </div>
+</section>

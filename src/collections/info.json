@@ -66,5 +66,10 @@
                 ]
             }
         ]
-    }
+    },
+    "gallery" : [
+        {"title": "Diploma Desarrollo de Aplicaciones Multiplataforma", "image": "Diploma-DAM.webp"},
+        {"title": "Diploma Ingles B2", "image": "Diploma-Ingles_B2.webp"},
+        {"title": "Diploma Desarrollo de Aplicaciones Multiplataforma", "image": "Diploma-DAM.webp"}
+    ]
 }

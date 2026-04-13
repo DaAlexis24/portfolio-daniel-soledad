@@ -3,8 +3,8 @@ import { ClientRouter, fade } from 'astro:transitions';
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Meta from './Meta.astro';
-import '../styles/global.css'
-import 'flowbite'
+import '../styles/global.css';
+// import 'flowbite'
 
 
 interface Props {
@@ -20,6 +20,7 @@ const {title, description, keywords} = Astro.props
 	<head>
 		<Meta title={title} description={description} keywords={keywords}/>
         <ClientRouter />
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@latest/dist/flowbite.min.js"></script>
 	</head>
 	<body>
         <div class="flex flex-col min-h-dvh overflow-x-hidden">
@@ -55,7 +56,9 @@ const {title, description, keywords} = Astro.props
 </style>
 
 <script>
-function applyTheme() {
+  import { initCarousels } from "flowbite";
+
+  function applyTheme() {
     document.documentElement.classList.toggle(
       "dark",
       localStorage.theme === "dark" ||
@@ -65,5 +68,8 @@ function applyTheme() {
   }
 
   applyTheme();
+  initCarousels();
+
   document.addEventListener("astro:after-swap", applyTheme);
+  document.addEventListener("astro:page-load", initCarousels);
 </script>

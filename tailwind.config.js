@@ -1,6 +1,12 @@
-tailwind.config = {
+import flowbite from "flowbite/plugin";
+import typography from "tailwindcss/typography";
+
+export default {
     darkMode: "class",
-    content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+    content: [
+        "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+        "./node_modules/flowbite/**/*.js",
+    ],
     theme: {
         extend: {
             colors: {
@@ -20,5 +26,5 @@ tailwind.config = {
             },
         },
     },
-    plugins: [require("flowbite/plugin"), require("@tailwindcss/typography")],
+    plugins: [flowbite, typography],
 };
