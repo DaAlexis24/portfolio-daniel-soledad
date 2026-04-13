@@ -56,8 +56,6 @@ const {title, description, keywords} = Astro.props
 </style>
 
 <script>
-  import { initCarousels } from "flowbite";
-
   function applyTheme() {
     document.documentElement.classList.toggle(
       "dark",
@@ -66,10 +64,7 @@ const {title, description, keywords} = Astro.props
           window.matchMedia("(prefers-color-scheme: dark)").matches)
     );
   }
-
   applyTheme();
-  initCarousels();
 
   document.addEventListener("astro:after-swap", applyTheme);
-  document.addEventListener("astro:page-load", initCarousels);
 </script>
