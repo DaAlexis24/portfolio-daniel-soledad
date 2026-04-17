@@ -1,0 +1,25 @@
+---
+import { Play, Pause, SkipBack, SkipForward } from "@lucide/astro";
+---
+<div class="reproductor max-w-xl h-90 bg-light-blue dark:bg-menu-dota rounded-2xl p-6">
+    <div class="info-music flex justify-between gap-2 items-center">
+        <picture class="w-1/2 h-45 bg-gray">
+            <img src="" alt="" class="w-full object-contain rounded-md">
+        </picture>
+        <div class="info w-1/2 h-45 bg-black/50 flex flex-col justify-center">
+            <h3 id="autor-music" class="text-2xl">Sample</h3>
+            <p><strong id="name-music" class="text-sm">Sample ps</strong></p>
+        </div>
+    </div>
+    <div class="funcion-music flex justify-center items-center gap-5 mt-5">
+        <button class="back flex justify-center items-center text-white bg-sea-blue p-2.5 rounded-full cursor-pointer shadow-lg shadow-plomo hover:scale-105 dark:bg-orange dark:shadow-acero" onclick="backMusic()">
+            <SkipBack size={20}/>
+        </button>
+        <button class="play" onclick="playMusic()">
+            <Play size={20}/>
+        </button>
+        <button class="next" onclick="nextMusic()">
+            <SkipForward size={20}/>
+        </button>
+    </div>
+</div>
