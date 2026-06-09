@@ -26,3 +26,5 @@ Es por ello que se creo este repositorio, donde se utilizo la metodología Model
 4. Hacer fetch de la playlist para así coger las canciones
 
 Se utilizo **Prisma** a la hora de construir las tablas de mi base de datos **PostgreSQL** y se levanto el servidor usando **Express.js**, de esta manera obtuvimos un proyecto robusto, rápido y sencillo de configurar.
+
+También usamos **Typescript** para escribir todo el código, pudiendo construir un código fuerte, bien tipado y sólido.
