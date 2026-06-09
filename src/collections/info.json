@@ -77,5 +77,37 @@
             "title": "Diploma GitHub Copilot",
             "image": "Diploma_Github-Copilot.webp"
         }
+    ],
+    "hobbies": [
+        {
+            "title": "Whiplash",
+            "format": "Película",
+            "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935572/whiplash_dbwqhh.webp"
+        },
+        {
+            "title": "Como Conocí a tu Madre",
+            "format": "Serie",
+            "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935592/himym_wurh4w.webp"
+        },
+        {
+            "title": "Dota2",
+            "format": "Videojuego",
+            "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935556/dota2_pn9jgr.webp"
+        },
+        {
+            "title": "The Sopranos",
+            "format": "Película",
+            "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935546/los_soprano_rn7mkl.webp"
+        },
+        {
+            "title": "El Gran Hotel Budapest",
+            "format": "Película",
+            "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935584/gran_hotel_budapest_rlte2h.webp"
+        },
+        {
+            "title": "Arcane",
+            "format": "Serie",
+            "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935555/arcane_rsc8nf.webp"
+        }
     ]
 }
