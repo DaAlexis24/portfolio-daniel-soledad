@@ -7,10 +7,25 @@ interface Props {
 
 const {title, format, image} = Astro.props
 ---
-<article>
-    <div>
-        <p>{format}</p>
+<article class="group relative overflow-hidden rounded-lg shadow-2xl cursor-pointer w-full h-72 tablet:h-60">
+    <div class="absolute inset-0 overflow-hidden">
+        <img src={image} alt={title} title={title} class="w-full h-full object-cover opacity-50"/>
     </div>
-    <img src={image} alt={title} title={title} />
-    <h4>{title}</h4>
+
+    <!-- REGULAR STATE -->
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+        <div class="absolute inset-0 p-6 flex justify-end transition-all duration-300 group-hover:opacity-0 z-20">
+            <h4 class="text-3xl font-bold">{title}</h4>
+        </div>
+    </div>
+
+    <!-- HOVER STATE -->
+    <div class="absolute inset-0 opacity-0 group-hover:opacity-100  transition-opacity duration-300 z-30">
+        <div class="flex justify-between items-start p-6">
+            <div class="bg-brand-light dark:bg-dire text-white px-3 py-2 rounded text-sm font-bold">{format}</div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 bg-linear-to-r from-zinc-500 via-stone-600 to-zinc-700 w-full rounded-t-2xl p-2 max-h-12 group-hover:max-h-40 transition-all duration-300 overflow-hidden">
+            <h4 class="text-2xl font-bold text-white!">{title}</h4>
+        </div>
+    </div>
 </article>

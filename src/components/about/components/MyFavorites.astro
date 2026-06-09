@@ -11,7 +11,7 @@ import MyFavoritesCard from "./MyFavoritesCard.astro";
         </span>
         <h3 class="text-lg lg:text-3xl xl:text-5xl text-dark-blue dark:text-plata">Mis Favoritos</h3>
     </div>
-    <div class="gallery flex w-full flex-col gap-3 tablet:flex-row tablet:gap-0 tablet:overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {
             hobbies.map((item) => {
                 return(
