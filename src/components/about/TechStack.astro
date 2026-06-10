@@ -11,7 +11,7 @@ techs.slice().sort((a,b) => a.localeCompare(b, 'en', {sensitivity: 'base'}))
             const nameTech = cleanTech.charAt(0).toUpperCase() + cleanTech.slice(1).replace(/_|#|-|@|<>/g, " ");
             const finalName = nameTech.split('.')[0];
             return (
-                <img src={`/icons/${tech}`} title={finalName} alt={finalName} class="h-10 w-10 object-scale-down drop-shadow-acero"/>
+                <img src={`/icons/${tech}`} title={finalName} alt={finalName} width={40} height={40} loading="lazy" class="h-10 w-10 object-scale-down drop-shadow-acero"/>
             )
         })}
     </div>

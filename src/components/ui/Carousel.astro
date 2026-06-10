@@ -25,6 +25,9 @@ const {gallery , id = 'carousel'} = Astro.props
                         src={`/${item.image}`}
                         class="w-full h-full object-contain border dark:border-none rounded-base"
                         alt={item.title}
+                        width={800}
+                        height={600}
+                        loading="lazy"
                     />
                 </div>
             ))

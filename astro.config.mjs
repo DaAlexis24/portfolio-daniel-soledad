@@ -10,11 +10,15 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
         build: {
-            cssCodeSplit: true, // Separa CSS por página
+            cssCodeSplit: true,
         },
         ssr: {
-            external: ["flowbite"], // Evita procesamiento innecesario
+            external: ["flowbite"],
         },
+    },
+
+    image: {
+        service: { entrypoint: "astro/assets/services/sharp" },
     },
 
     adapter: netlify(),
