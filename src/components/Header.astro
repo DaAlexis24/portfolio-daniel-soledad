@@ -34,7 +34,7 @@ import Logo from "../assets/Logo.astro"
 
                 <!-- Hamburger Menu Button -->
                 <div id="openMenu" class="flex items-center justify-center w-10 h-10 cursor-pointer transition-transform duration-200 active:scale-90">
-                    <svg class="w-7 h-7 text-dark-blue dark:text-light-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 12L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 17L4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                    <svg class="w-7 h-7 text-dark-blue dark:text-light-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 12L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 17L4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
                 </div>
 
                 <!-- Close Menu Button -->
@@ -46,7 +46,8 @@ import Logo from "../assets/Logo.astro"
                     stroke-linejoin="round"
                     stroke-width="2"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+                    stroke="currentColor"
+                    aria-hidden="true"><path d="M6 18L18 6M6 6l12 12"></path></svg>
                 </div>
             </div>
 
@@ -72,7 +73,7 @@ import Logo from "../assets/Logo.astro"
                 <!-- Contact Button (Mobile) -->
                 <div class="relative z-10 w-full px-5 mt-3 tablet:hidden text-white">
                     <Button url="/cv.pdf" download="Daniel-Soledad-CV.pdf" type="fill" className="m-auto w-full justify-center">
-                        Mi CV <Download size={16} />
+                            Mi CV <Download size={16} aria-hidden="true" />
                     </Button>
                 </div>
             </div>
@@ -81,7 +82,7 @@ import Logo from "../assets/Logo.astro"
             <div class="relative hidden tablet:flex items-center gap-2 ml-4 lg:ml-6">
                 <!-- Contact Button (Desktop) -->
                 <Button type="fill" className="md:flex mx-1" url="/cv.pdf" download="Daniel-Soledad-CV.pdf">
-                    Mi CV <Download size={16} />
+                    Mi CV <Download size={16} aria-hidden="true" />
                 </Button>
 
                 <span class="separator-line hidden tablet:inline-block bg-[rgba(183,202,255,0.5)] mt-5 -translate-y-1/2 w-px h-5"></span>
@@ -100,92 +101,7 @@ import Logo from "../assets/Logo.astro"
             </div>
         </nav>
     </div>
-    <script is:inline>
-        function initHeader() {
-            const darkToggle = document.getElementById('darkToggle');
-            const darkToggleMobile = document.getElementById('darkToggleMobile');
-            const openMenu = document.getElementById('openMenu');
-            const closeMenu = document.getElementById('closeMenu');
-            const menu = document.getElementById('menu');
-            let isMobileMenuOpen = false;
-            
-            function syncDarkModeIcons() {
-                const isDark = document.documentElement.classList.contains('dark');
-                const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
-                const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
-                
-                if (isDark) {
-                    sunIcons.forEach(icon => icon.classList.remove('hidden'));
-                    moonIcons.forEach(icon => icon.classList.add('hidden'));
-                    document.getElementById('dayText')?.classList.remove('hidden');
-                    document.getElementById('nightText')?.classList.add('hidden');
-                } else {
-                    moonIcons.forEach(icon => icon.classList.remove('hidden'));
-                    sunIcons.forEach(icon => icon.classList.add('hidden'));
-                    document.getElementById('dayText')?.classList.add('hidden');
-                    document.getElementById('nightText')?.classList.remove('hidden');
-                }
-            }
-            
-            function toggleDarkMode() {
-                const html = document.documentElement;
-                html.classList.toggle('dark');
-                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-                syncDarkModeIcons();
-            }
-            
-            function openMobileMenu() {
-                menu?.classList.remove('hidden');
-                openMenu?.classList.add('hidden');
-                closeMenu?.classList.remove('hidden', 'flex');
-                closeMenu?.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-                isMobileMenuOpen = true;
-            }
-            
-            function closeMobileMenu() {
-                menu?.classList.add('hidden');
-                closeMenu?.classList.add('hidden');
-                closeMenu?.classList.remove('flex');
-                openMenu?.classList.remove('hidden');
-                document.body.style.overflow = '';
-                isMobileMenuOpen = false;
-            }
-            
-            // Event listeners
-            darkToggle?.addEventListener('click', toggleDarkMode);
-            darkToggleMobile?.addEventListener('click', toggleDarkMode);
-            openMenu?.addEventListener('click', openMobileMenu);
-            closeMenu?.addEventListener('click', closeMobileMenu);
-            
-            menu?.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 640) closeMobileMenu();
-                });
-            });
-            
-            document.addEventListener('click', (e) => {
-                if (isMobileMenuOpen && menu && !menu.contains(e.target) && !openMenu?.contains(e.target)) {
-                    closeMobileMenu();
-                }
-            });
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && isMobileMenuOpen) {
-                    closeMobileMenu();
-                }
-            });
-            
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 640) closeMobileMenu();
-            });
-            
-            syncDarkModeIcons();
-            window.closeMobileMenu = closeMobileMenu;
-        }
-
-        document.addEventListener('astro:page-load', initHeader);
-    </script>
+    <script src="/src/scripts/header.js"></script>
 </header>
 
 <style>

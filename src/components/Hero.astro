@@ -14,11 +14,11 @@ const iconMap = {
 
 const {title, professions, abstract} = hero;
 ---
-<section class="justify-center" role="presentation">
+<section id="hero" class="justify-center" role="presentation">
     <div class="container grid grid-cols-1 max-w-7xl mx-auto px-10 pt-20 tablet:pt-25 sm:grid-cols-[1fr_auto] tablet:grid-cols-[2fr_1fr]">
         <div class="flex flex-col gap-6 max-w-sm mx-auto text-center items-center sm:max-w-md sm:text-left sm:items-start tablet:max-w-3xl lg:max-w-6xl">
             <hgroup>
-                <h1 class="flex flex-wrap justify-center text-center items-center md:text-start sm:justify-start gap-2 text-4xl text-dark-blue tablet:text-5xl lg:text-7xl tablet:gap-3 dark:text-dire">Hola, soy <span class="typing">{title}</span></h1>
+                <h1 class="flex flex-wrap justify-center text-center items-center md:text-start sm:justify-start gap-2 text-4xl text-dark-blue tablet:text-5xl lg:text-7xl tablet:gap-3 dark:text-dire">Hola, soy <span class="typing" style={`--typing-ch: ${title.length}ch; --typing-steps: ${title.length}`}>{title}</span></h1>
                 <div class="text-decorative">
                     {professions.map((profession) => (
                         <p class="font-semibold text-acero tablet:text-xl dark:text-light-gray">{profession}</p>
@@ -28,7 +28,7 @@ const {title, professions, abstract} = hero;
             <p class=" text-gray-500 tablet:text-lg dark:text-neutral-200">{abstract}</p>
             <div class="inline-flex justify-center items-center py-2 space-x-5 overflow-hidden">
                 <Button type='solid' url='/sobre-mi'>
-                    Conóceme <UserSearchIcon size={16}/>
+                    Conóceme <UserSearchIcon size={16} aria-hidden="true"/>
                 </Button>
                 {socialLinks.map((social) => {
                     const Icon = iconMap[social.site as keyof typeof iconMap];
@@ -65,7 +65,6 @@ const {title, professions, abstract} = hero;
     }
 
     p {
-        content-visibility: auto;
         font-family: system-ui, -apple-system, sans-serif;
     }
 
@@ -94,8 +93,8 @@ const {title, professions, abstract} = hero;
         display: block;
         white-space: nowrap;
         border-right: 0.2rem solid;
-        width: 6ch;
-        animation: writing 2s steps(6), blink .7s infinite step-end alternate;
+        width: var(--typing-ch, 6ch);
+        animation: writing 2s steps(var(--typing-steps, 6)), blink .7s infinite step-end alternate;
         overflow: hidden;
     }
 
@@ -107,4 +106,26 @@ const {title, professions, abstract} = hero;
         50% {border-color: transparent;}
     }
 
+    /* Pause animations when section is not in viewport */
+    section:not(.in-view) .text-decorative p,
+    section:not(.in-view) span.typing {
+        animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .text-decorative p,
+        span.typing {
+            animation: none;
+        }
+    }
 </style>
+
+<script>
+    const hero = document.getElementById('hero');
+    if (hero) {
+        const observer = new IntersectionObserver(([entry]) => {
+            hero.classList.toggle('in-view', entry.isIntersecting);
+        }, { threshold: 0 });
+        observer.observe(hero);
+    }
+</script>

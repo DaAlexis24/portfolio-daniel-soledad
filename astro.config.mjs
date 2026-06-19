@@ -12,9 +12,6 @@ export default defineConfig({
         build: {
             cssCodeSplit: true,
         },
-        ssr: {
-            external: ["flowbite"],
-        },
     },
 
     image: {

@@ -16,7 +16,7 @@ const {position, date, enterprise, summary, achievements} = Astro.props
     <div class="relative border-s border-acero/90">
         <div>
             <span class="absolute top-0 flex items-center justify-center w-6 h-6 bg-bright-blue dark:bg-light-dire rounded-full -start-3 ring-6 ring-light-blue dark:ring-menu-dota text-light-blue">
-                <Briefcase size={15}/>
+                <Briefcase size={15} aria-hidden="true"/>
             </span>
         </div>
     </div>
@@ -29,7 +29,7 @@ const {position, date, enterprise, summary, achievements} = Astro.props
             {achievements.map((achieve) => {
                 return(
                 <li class="flex items-center list-none gap-2 tablet:gap-3">
-                    <BadgeCheckIcon size={10} class="text-bright-blue dark:text-light-dire"/>
+                    <BadgeCheckIcon size={10} class="text-bright-blue dark:text-light-dire" aria-hidden="true"/>
                     <span class="font-roboto text-sm text-medium-gray dark:text-plata">{achieve}</span>
                 </li>
                 )

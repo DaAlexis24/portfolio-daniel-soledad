@@ -5,7 +5,7 @@ import Button from "./ui/Button.astro";
 <section class="py-10 px-8 bg-radiant dark:bg-menu-dota" style="content-visibility:auto; contain-intrinsic-size: auto 300px">
     <div class="max-w-7xl mx-auto flex flex-col justify-center items-center gap-4">
         <div class="p-4 rounded-full bg-sea-blue text-dark-blue dark:bg-light-dire dark:text-dire">
-            <Handshake size={50}/>
+            <Handshake size={50} aria-hidden="true"/>
         </div>
         <hgroup class="text-center">
             <h3 class="text-3xl mb-4 tablet:text-4xl lg:text-6xl">
@@ -14,7 +14,7 @@ import Button from "./ui/Button.astro";
             <p class="text-sm text-acero dark:text-plata">Empecemos a trabajar, estoy abierto a nuevas oportunidades laborales</p>
         </hgroup>
         <Button type="fill" url="mailto:danielalsole24@gmail.com" className="flex gap-4">
-            Contacta conmigo <SmilePlus size={20}/>
+            Contacta conmigo <SmilePlus size={20} aria-hidden="true"/>
         </Button>
     </div>
 </section>
