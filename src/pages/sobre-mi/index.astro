@@ -4,7 +4,7 @@ import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
 import HeaderPage from "../../components/ui/HeaderPage.astro";
 import MyPhoto from "../../assets/MyPhoto.astro";
 
-import {aboutMePageInfo} from '../../config/info'
+import { aboutMe } from '../../config/meta.json'
 import SoftSkillsRating from "../../components/about/SoftSkillsRating.astro";
 import Blockquote from "../../components/about/Blockquote.astro";
 import TechStack from "../../components/about/TechStack.astro";
@@ -13,7 +13,7 @@ import Education from "../../components/about/Education.astro";
 import Hobbies from "../../components/about/Hobbies.astro";
 import ContactMe from "../../components/ContactMe.astro";
 
-const {title, description, keywords} = aboutMePageInfo
+const {title, description, keywords} = aboutMe
 
 const blockquote = {
     quote: "En un entorno ágil, la única constante es el cambio.",

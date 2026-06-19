@@ -1,0 +1,17 @@
+{
+    "home": {
+        "title": "Daniel Soledad | FullStack Developer",
+        "description": "Portafolio Web de Daniel Soledad, graduado en desarrollo de aplicaciones en multiplataformas y web",
+        "keywords": "web designer, portfolio, fullstack developer, design, code, personal website, mern"
+    },
+    "projects": {
+        "title": "Proyectos | DS FullStack Dev",
+        "description": "Portafolio de proyectos de Daniel Soledad, Desarrollador Multiplataforma y Web",
+        "keywords": "proyectos, fullstack, Desarrollo Web, proyectos, frontend, backend, desarrollo aplicaciones multiplataforma"
+    },
+    "aboutMe": {
+        "title": "Sobre Mi | DS FullStack Dev",
+        "description": "Información adicional de desarrollador de aplicaciones multiplataforma y web Daniel Soledad",
+        "keywords": "sobre mi, fullstack, Desarrollo Web, about me, Daniel Soledad, información adicional, desarrollo aplicaciones multiplataforma"
+    }
+}

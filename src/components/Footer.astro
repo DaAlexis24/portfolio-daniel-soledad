@@ -1,6 +1,15 @@
 ---
 import Logo from "../assets/Logo.astro";
-import { siteInfo, socialLinks } from "../config/info";
+import site from "../config/site.json";
+import LinkedinIcon from './icons/LinkedinIcon.astro';
+import GithubIcon from './icons/GithubIcon.astro';
+
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "";
+
+const iconMap = {
+    LinkedIn: LinkedinIcon,
+    GitHub: GithubIcon,
+};
 ---
 
 <footer class="relative overflow-hidden bg-linear-65 from-radiant via-blue-100 to-radiant dark:from-gray-900 dark:via-gray-700 dark:to-gray-900" role="contentinfo">
@@ -11,17 +20,20 @@ import { siteInfo, socialLinks } from "../config/info";
         </a>
         <span class="separator-line hidden sm:inline-block bg-light-black dark:bg-neutral-200 mt-5 -translate-y-1/2 w-px h-5"></span>
         <span class="text-sm font-rubik text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear()} 
-            <a href={siteInfo.url || " "}>{siteInfo.author || " "}</a>
+            <a href={SITE_URL || " "}>{site.author || " "}</a>
         </span>
     </div>
     <div class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">
-        {socialLinks.map((social)=> (
-            <a href={social.url} target="_blank" class="social-icon-link" rel="noopener noreferrer" title={social.site}>
-                <div class="social-icon text-light-black dark:text-neutral-200">
-                    <Fragment set:html={social.icon} />
-                </div>
-            </a>
-        ))}
+        {site.socialLinks.map((social)=> {
+            const Icon = iconMap[social.site as keyof typeof iconMap];
+            return (
+                <a href={social.url} target="_blank" class="social-icon-link" rel="noopener noreferrer" title={social.site}>
+                    <div class="social-icon text-light-black dark:text-neutral-200">
+                        {Icon && <Icon />}
+                    </div>
+                </a>
+            );
+        })}
     </div>
   </section>
 </footer>

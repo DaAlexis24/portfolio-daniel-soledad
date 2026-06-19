@@ -1,7 +1,7 @@
 ---
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import { siteInfo } from '../config/info';
+import { home } from '../config/meta.json';
 import AboutMe from '../components/AboutMe.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
@@ -9,7 +9,7 @@ import ContactMe from '../components/ContactMe.astro';
 
 ---
 
-<Layout title={siteInfo.meta.title} description={siteInfo.meta.description} keywords={siteInfo.meta.keywords}>
+<Layout title={home.title} description={home.description} keywords={home.keywords}>
     <Hero />
     <AboutMe />
     <Experience />

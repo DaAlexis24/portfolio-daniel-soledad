@@ -109,5 +109,19 @@
             "format": "Serie",
             "image": "https://res.cloudinary.com/dtfjsgavh/image/upload/v1780935555/arcane_rsc8nf.webp"
         }
+    ],
+    "menu": [
+        {
+            "item": "Inicio",
+            "url": "/"
+        },
+        {
+            "item": "Sobre Mi",
+            "url": "/sobre-mi"
+        },
+        {
+            "item": "Proyectos",
+            "url": "/proyectos"
+        }
     ]
 }

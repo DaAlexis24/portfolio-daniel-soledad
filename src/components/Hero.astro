@@ -1,9 +1,16 @@
 ---
 import MyPhoto from '../assets/MyPhoto.astro';
-import {hero} from '../collections/info.json'
-import { socialLinks } from '../config/info';
+import { hero } from '../config/content.json';
+import { socialLinks } from '../config/site.json';
 import Button from './ui/Button.astro';
 import { UserSearchIcon } from '@lucide/astro';
+import LinkedinIcon from './icons/LinkedinIcon.astro';
+import GithubIcon from './icons/GithubIcon.astro';
+
+const iconMap = {
+    LinkedIn: LinkedinIcon,
+    GitHub: GithubIcon,
+};
 
 const {title, professions, abstract} = hero;
 ---
@@ -23,13 +30,16 @@ const {title, professions, abstract} = hero;
                 <Button type='solid' url='/sobre-mi'>
                     Conóceme <UserSearchIcon size={16}/>
                 </Button>
-                {socialLinks.map((social)=> (
-                    <a href={social.url} target="_blank"  rel="noopener noreferrer" title={social.site}>
-                        <div class="icons text-bright-blue dark:text-dire hover:scale-105">
-                            <Fragment set:html={social.icon} />
-                        </div>
-                    </a>
-                ))}
+                {socialLinks.map((social) => {
+                    const Icon = iconMap[social.site as keyof typeof iconMap];
+                    return (
+                        <a href={social.url} target="_blank" rel="noopener noreferrer" title={social.site}>
+                            <div class="icons text-bright-blue dark:text-dire hover:scale-105">
+                                {Icon && <Icon />}
+                            </div>
+                        </a>
+                    );
+                })}
             </div>
         </div>
         <div class="mt-0 flex justify-center items-center">
@@ -40,16 +50,16 @@ const {title, professions, abstract} = hero;
 
 <style>
     .icons{
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
     }
     .icons svg{
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
         fill: currentColor;
         transition: all 0.3s ease-in-out;
     }

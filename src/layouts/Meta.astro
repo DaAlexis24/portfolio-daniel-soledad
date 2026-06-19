@@ -1,5 +1,7 @@
 ---
-import { siteInfo } from "../config/info";
+import site from "../config/site.json";
+
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "";
 
 export interface Props {
     title?: string;
@@ -13,7 +15,7 @@ const {
     title,
     description,
     keywords = "",
-    url = siteInfo.url,
+    url = SITE_URL,
     ogImage = "/favicon.webp"
 } = Astro.props
 ---
@@ -26,7 +28,7 @@ const {
 <link rel="preload" href="/assets/fonts/cinzel-v26-latin-800.woff2" as="font" type="font/woff2" crossorigin />
 <meta name="description" content={description}>
 <meta name="keywords" content={keywords}>
-<meta name="author" content={siteInfo.author}>
+<meta name="author" content={site.author}>
 <title>{title}</title>
 
 <!-- OpenGraph tags -->

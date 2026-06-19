@@ -1,6 +1,6 @@
 ---
 import { Download, Moon, SunMedium } from "@lucide/astro"
-import menus from '../collections/menu.json'
+import { menu } from '../config/content.json'
 import Button from './ui/Button.astro'
 import Logo from "../assets/Logo.astro"
 ---
@@ -61,9 +61,9 @@ import Logo from "../assets/Logo.astro"
                 <!-- Menu Links -->
                 <div class="relative z-10 flex flex-col tablet:flex-row items-center w-full tablet:w-auto gap-1 tablet:gap-0">
                     {
-                        menus.map((menu) => {
+                        menu.map((item) => {
                             return (
-                            <a href={menu.url} class="relative flex items-center justify-center w-full tablet:w-auto px-5 py-3 tablet:py-2 tablet:px-3 md:px-4 font-roboto tracking-wide text-center duration-200 ease-out rounded-lg tablet:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue hover:bg-white/80 tablet:hover:bg-transparent dark:hover:text-white dark:hover:bg-white/10 tablet:dark:hover:bg-transparent active:scale-[0.98] tablet:active:scale-100 transition-all" rel="noopener noreferrer">{menu.item}</a>
+                            <a href={item.url} class="relative flex items-center justify-center w-full tablet:w-auto px-5 py-3 tablet:py-2 tablet:px-3 md:px-4 font-roboto tracking-wide text-center duration-200 ease-out rounded-lg tablet:rounded-none text-light-black dark:text-neutral-200 hover:text-dark-blue hover:bg-white/80 tablet:hover:bg-transparent dark:hover:text-white dark:hover:bg-white/10 tablet:dark:hover:bg-transparent active:scale-[0.98] tablet:active:scale-100 transition-all" rel="noopener noreferrer">{item.item}</a>
                             )
                         })
                     }
