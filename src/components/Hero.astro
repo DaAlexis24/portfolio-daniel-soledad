@@ -33,7 +33,7 @@ const {title, professions, abstract} = hero;
                 {socialLinks.map((social) => {
                     const Icon = iconMap[social.site as keyof typeof iconMap];
                     return (
-                        <a href={social.url} target="_blank" rel="noopener noreferrer" title={social.site}>
+                        <a href={social.url} target="_blank" rel="noopener noreferrer" title={social.site} aria-label={`${social.site} (se abre en nueva pestaña)`}>
                             <div class="icons text-bright-blue dark:text-dire hover:scale-105">
                                 {Icon && <Icon />}
                             </div>

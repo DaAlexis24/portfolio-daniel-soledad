@@ -32,7 +32,7 @@ const {max = 5, skills = softSkills} = Astro.props
                         {Array.from({length: max}, (_ , i) => {
                             const idx = i + 1;
                             return (
-                                <button class={`diamond-btn`} data-index={idx} data-value={skill.level} aria-label={`${idx} de ${max}`} aria-pressed={idx <= skill.level ? "true" : "false"}>
+                                <button class={`diamond-btn`} data-index={idx} data-value={skill.level} aria-label={`${skill.skill}: ${idx} de ${max}`} aria-pressed={idx <= skill.level ? "true" : "false"}>
                                     <span class={`diamond ${idx <= skill.level ? "diamond--filled" : ""}`}/>
                                 </button>
                             )

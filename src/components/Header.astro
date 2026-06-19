@@ -21,11 +21,11 @@ import Logo from "../assets/Logo.astro"
         </div>
 
         <!-- Navigation -->
-        <nav class="flex flex-row-reverse justify-start w-full text-sm tablet:justify-end tablet:flex-row tablet:items-center" role="navigation">
+        <nav class="flex flex-row-reverse justify-start w-full text-sm tablet:justify-end tablet:flex-row tablet:items-center">
             <!-- Mobile Menu Toggle Buttons -->
             <div class="flex items-center gap-2 tablet:hidden">
                 <!-- Dark Mode Toggle (Mobile) -->
-                <div id="darkToggleMobile" class="flex items-center justify-center w-10 h-10 cursor-pointer rounded-full bg-linear-to-b dark:from-white dark:to-[#edeefa] border-[0.5px] dark:border-[#f3f3ff] from-neutral-800 to-neutral-600 border-neutral-600 transition-transform duration-200 active:scale-95">
+                <div id="darkToggleMobile" role="button" tabindex="0" class="flex items-center justify-center w-10 h-10 cursor-pointer rounded-full bg-linear-to-b dark:from-white dark:to-[#edeefa] border-[0.5px] dark:border-[#f3f3ff] from-neutral-800 to-neutral-600 border-neutral-600 transition-transform duration-200 active:scale-95">
                     <div class="flex justify-center items-center w-6 h-6 relative overflow-hidden rounded-full dark:bg-[#7fa1ff] bg-linear-to-b dark:from-light-blue dark:to-dark-blue border-[0.5px] dark:border-[#7fa1ff] from-dire to-red-500 border-red-800" style="box-shadow: 0px 2px 3px 0 rgba(55,52,209,0.21);">
                         <SunMedium class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-sun" /> 
                         <Moon class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-moon" />
@@ -33,12 +33,12 @@ import Logo from "../assets/Logo.astro"
                 </div>
 
                 <!-- Hamburger Menu Button -->
-                <div id="openMenu" class="flex items-center justify-center w-10 h-10 cursor-pointer transition-transform duration-200 active:scale-90">
+                <div id="openMenu" role="button" tabindex="0" class="flex items-center justify-center w-10 h-10 cursor-pointer transition-transform duration-200 active:scale-90">
                     <svg class="w-7 h-7 text-dark-blue dark:text-light-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 12L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 17L4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
                 </div>
 
                 <!-- Close Menu Button -->
-                <div id="closeMenu" class="hidden items-center justify-center w-10 h-10 cursor-pointer transition-transform duration-200 active:scale-90">
+                <div id="closeMenu" role="button" tabindex="0" class="hidden items-center justify-center w-10 h-10 cursor-pointer transition-transform duration-200 active:scale-90">
                     <svg
                     class="w-6 h-6 text-acero dark:text-light-gray"
                     fill="none"
@@ -88,7 +88,7 @@ import Logo from "../assets/Logo.astro"
                 <span class="separator-line hidden tablet:inline-block bg-[rgba(183,202,255,0.5)] mt-5 -translate-y-1/2 w-px h-5"></span>
 
                 <!-- Dark Mode Toggle (Desktop) -->
-                <div id="darkToggle" class="relative flex items-center h-9 px-2 gap-1.5 font-medium cursor-pointer rounded-full bg-linear-to-b dark:from-white dark:to-[#edf1fa] border-[0.5px] dark:border-light-blue from-neutral-800 to-neutral-600 border-neutral-600 transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95 mx-1">
+                <div id="darkToggle" role="button" tabindex="0" class="relative flex items-center h-9 px-2 gap-1.5 font-medium cursor-pointer rounded-full bg-linear-to-b dark:from-white dark:to-[#edf1fa] border-[0.5px] dark:border-light-blue from-neutral-800 to-neutral-600 border-neutral-600 transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95 mx-1">
                     <div class="flex justify-center items-center shrink-0 w-6 h-6 relative overflow-hidden rounded-full bg-linear-to-b dark:from-[#85a6ff] dark:to-[#2d6dc3] border-[0.5px] dark:border-[#7fa1ff] from-dire to-red-500 border-red-800" style="box-shadow: 0px 2px 3px 0 rgba(55,52,209,0.21);">
                         <SunMedium id="sun" class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease" />
                         <Moon class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease" id="moon" />

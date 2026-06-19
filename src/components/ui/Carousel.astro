@@ -47,13 +47,13 @@ const {gallery , id = 'carousel'} = Astro.props
         }
     </div>
 
-    <button type="button" data-carousel-prev class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+    <button type="button" data-carousel-prev aria-label="Anterior" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-sea-blue dark:focus-visible:ring-dire focus-visible:ring-offset-2 rounded-lg">
         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full text-white bg-gray-800/30 group-hover:bg-sea-blue/50 dark:group-hover:bg-ancient/60">
             <ArrowBigLeft size={20} />
         </span>
     </button>
 
-    <button type="button" data-carousel-next class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+    <button type="button" data-carousel-next aria-label="Siguiente" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-sea-blue dark:focus-visible:ring-dire focus-visible:ring-offset-2 rounded-lg">
         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full text-white bg-gray-800/30 group-hover:bg-sea-blue/50 dark:group-hover:bg-ancient/60">
             <ArrowBigRight size={20}/>
         </span>

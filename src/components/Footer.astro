@@ -27,7 +27,7 @@ const iconMap = {
         {site.socialLinks.map((social)=> {
             const Icon = iconMap[social.site as keyof typeof iconMap];
             return (
-                <a href={social.url} target="_blank" class="social-icon-link" rel="noopener noreferrer" title={social.site}>
+                <a href={social.url} target="_blank" class="social-icon-link" rel="noopener noreferrer" title={social.site} aria-label={`${social.site} (se abre en nueva pestaña)`}>
                     <div class="social-icon text-light-black dark:text-neutral-200">
                         {Icon && <Icon />}
                     </div>

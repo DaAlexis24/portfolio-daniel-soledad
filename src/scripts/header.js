@@ -54,6 +54,19 @@ function initHeader() {
     darkToggleMobile?.addEventListener('click', toggleDarkMode);
     openMenu?.addEventListener('click', openMobileMenu);
     closeMenu?.addEventListener('click', closeMobileMenu);
+
+    // Keyboard support for toggles
+    function onToggleKeydown(e, handler) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handler();
+        }
+    }
+
+    darkToggle?.addEventListener('keydown', (e) => onToggleKeydown(e, toggleDarkMode));
+    darkToggleMobile?.addEventListener('keydown', (e) => onToggleKeydown(e, toggleDarkMode));
+    openMenu?.addEventListener('keydown', (e) => onToggleKeydown(e, openMobileMenu));
+    closeMenu?.addEventListener('keydown', (e) => onToggleKeydown(e, closeMobileMenu));
     
     menu?.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {

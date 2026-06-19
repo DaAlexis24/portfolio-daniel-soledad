@@ -22,9 +22,10 @@ const {title, description, keywords} = Astro.props
         <ClientRouter />
 	</head>
 	<body>
+        <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
         <div class="flex flex-col min-h-dvh overflow-x-hidden">
             <Header />
-            <main class="bg-white dark:bg-gray-900 pt-15 flex-1" role="main">
+            <main id="main-content" class="bg-white dark:bg-gray-900 pt-15 flex-1" tabindex="-1">
                 <slot />
             </main>
 	        <Footer />
@@ -34,6 +35,23 @@ const {title, description, keywords} = Astro.props
 </html>
 
 <style is:global>
+    .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 0;
+        z-index: 9999;
+        padding: 0.5rem 1rem;
+        background: var(--color-bright-blue);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 0 0 0.5rem 0;
+        transition: top 0.15s ease;
+    }
+    .skip-link:focus {
+        top: 0;
+    }
+
 	html,
 	body {
 		margin: 0;
