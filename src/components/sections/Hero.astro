@@ -116,11 +116,16 @@ const {title, professions, abstract} = hero;
 </style>
 
 <script>
-    const hero = document.getElementById('hero');
-    if (hero) {
-        const observer = new IntersectionObserver(([entry]) => {
-            hero.classList.toggle('in-view', entry.isIntersecting);
-        }, { threshold: 0 });
-        observer.observe(hero);
+    function initHeroObserver() {
+        const hero = document.getElementById('hero');
+        if (hero) {
+            const observer = new IntersectionObserver(([entry]) => {
+                hero.classList.toggle('in-view', entry.isIntersecting);
+            }, { threshold: 0 });
+            observer.observe(hero);
+        }
     }
+
+    document.addEventListener('astro:page-load', initHeroObserver);
+    initHeroObserver();
 </script>
