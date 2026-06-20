@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectCard from "./ui/ProjectCard.astro";
-import Button from "./ui/Button.astro";
+import ProjectCard from "../cards/ProjectCard.astro";
+import Button from "../ui/Button.astro";
 import { CircleArrowRight } from "@lucide/astro";
 
 const featuredProjects = await getCollection('projects', ({data}) => {
