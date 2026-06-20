@@ -17,13 +17,13 @@ const {quote, author} = Astro.props
 <figure class="max-w-3xl mx-auto text-center my-10">
     <MessageSquareQuote class="w-10 h-10 text-sea-blue dark:text-orange mb-4 mx-auto"/>
     <blockquote>
-        <p class="text-2xl italic font-semibold tracking-tight text-heading">
+        <p class="text-2xl tablet:text-3xl lg:text-4xl italic font-semibold tracking-tight text-heading text-acero dark:text-plata">
             {`"${quote}"`}
         </p>
     </blockquote>
     <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
         <img class="w-7 h-7 rounded-full" src={author.photo} alt={author.name} width={28} height={28}>
-        <div class="flex items-center divide-x rtl:divide-x-reverse divide-default">
+        <div class="flex items-center divide-x rtl:divide-x-reverse divide-default dark:text-white lg:text-xl">
             <cite class="pe-3 font-medium text-heading">{author.name}</cite>
             <cite class="ps-3 text-sm text-body">{author.occupation}</cite>
         </div>
