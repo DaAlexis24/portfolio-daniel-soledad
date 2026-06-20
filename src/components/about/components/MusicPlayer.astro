@@ -141,7 +141,7 @@ import {
     import type { Playlist } from "../../../types/music";
 
     const LS_KEY = "music-player-state-v1";
-    const PLAYLIST_URL = import.meta.env.PUBLIC_PLAYLIST_API_URL;
+    const PLAYLIST_URL = '/api/playlist';
 
     type Persisted = {
         cursor: number;
@@ -529,7 +529,7 @@ import {
 
     async function loadPlaylist(): Promise<void> {
         if (!PLAYLIST_URL) {
-            showError("Falta PUBLIC_PLAYLIST_API_URL en .env");
+            showError("Error al cargar la playlist");
             return;
         }
         const res = await fetch(PLAYLIST_URL);
