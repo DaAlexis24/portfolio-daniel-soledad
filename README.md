@@ -2,6 +2,16 @@
 
 Portfolio personal desarrollado con **Astro 5**, **Tailwind CSS 4** y desplegado en **Netlify**.
 
+## Características
+
+- Portfolio personal con Astro 5 y renderizado SSR en Netlify
+- Proyectos gestionados con Astro Content Collections
+- Filtro de proyectos por categoría
+- Modo oscuro persistente
+- Reproductor de música consumido mediante proxy server-side
+- Optimización de imágenes con Sharp y `<Image />`
+- Mejoras de accesibilidad: skip link, ARIA labels y navegación por teclado
+
 ## Stack
 
 | Tecnología                | Uso                                       |
@@ -13,9 +23,15 @@ Portfolio personal desarrollado con **Astro 5**, **Tailwind CSS 4** y desplegado
 | Lucide Astro              | Iconos SVG                                |
 | Sharp                     | Optimización de imágenes                  |
 
+## Gestión de proyectos
+
+Los proyectos se gestionan con Astro Content Collections desde `src/content/projects/`.
+
+Cada proyecto se define en un archivo `.md` con front-matter para el título, imagen, descripción, stack, categoría, estado destacado y enlaces. El contenido Markdown del archivo se renderiza en la página de detalle del proyecto.
+
 ## Estructura del proyecto
 
-```
+```text
 src/
 ├── assets/
 │   ├── fonts/              # Tipografías originales (ahora en public/)
@@ -57,9 +73,9 @@ Las imágenes originales pesaban mucho y no renderizaban bien. Solución:
 2. Crear un componente Astro con la etiqueta `<Image />`
 3. Usar props para personalizar cada instancia
 4. Configurar: `layout="constrained"`, `fetchpriority="high"`, `loading="eager"`
-    - **Constrained** genera tamaños responsivos según el viewport
-    - **fetchpriority** prioriza el render de imágenes clave
-    - **loading eager** fuerza la carga inmediata
+   - **Constrained** genera tamaños responsivos según el viewport
+   - **fetchpriority** prioriza el render de imágenes clave
+   - **loading eager** fuerza la carga inmediata
 
 #### Render Blocking Request
 
