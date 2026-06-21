@@ -22,7 +22,7 @@ const {gallery , id = 'carousel'} = Astro.props
                     data-carousel-item
                 >
                     <img
-                        src={`/${item.image}`}
+                        src={`/gallery/${item.image}`}
                         class="w-full h-full object-contain border dark:border-none rounded-base"
                         alt={item.title}
                         width={800}
@@ -50,8 +50,8 @@ const {gallery , id = 'carousel'} = Astro.props
     <button type="button" data-carousel-prev aria-label="Anterior" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-sea-blue dark:focus-visible:ring-dire focus-visible:ring-offset-2 rounded-lg">
         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full text-white bg-gray-800/30 group-hover:bg-sea-blue/50 dark:group-hover:bg-ancient/60">
             <ArrowBigLeft size={20} />
-        </span>
-    </button>
+        </button>
+    </span>
 
     <button type="button" data-carousel-next aria-label="Siguiente" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-sea-blue dark:focus-visible:ring-dire focus-visible:ring-offset-2 rounded-lg">
         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full text-white bg-gray-800/30 group-hover:bg-sea-blue/50 dark:group-hover:bg-ancient/60">
@@ -70,7 +70,7 @@ const {gallery , id = 'carousel'} = Astro.props
       const indicators = carousel.querySelectorAll("[data-carousel-indicator]");
       let current = 0;
 
-      function goTo(index) {
+      function goTo(index: number) {
         items[current].classList.remove("opacity-100");
         items[current].classList.add("opacity-0", "pointer-events-none");
         indicators[current].classList.remove("bg-black");
