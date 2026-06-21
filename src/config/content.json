@@ -45,13 +45,25 @@
     "experienceInfo": {
         "info": [
             {
-                "position": "Junior Development",
+                "position": "Desarrollador Full Stack",
+                "date": "2026 - Act.",
+                "enterprise": "Platformline",
+                "summary": "Trabajando actualmente en la creación de software de gestión empresarial para un despacho de abogados, enfocado en mantener un buen ambiente de trabajo y la delegación de tareas diarias.",
+                "achievements": [
+                    "Uso de React, Node, PHP, MySQL y Ollama como herramientas de desarrollo.",
+                    "Comunicación activa y propuestas de mejora en las reuniones semanales.",
+                    "Formación de 4 desarrolladores junior, reduciendo su curva de aprendizaje."
+                ]
+            },
+            {
+                "position": "Desarrollador de Aplicaciones Multiplataforma",
                 "date": "2023 - 2024",
                 "enterprise": "Abaco Developments",
-                "summary": "Era parte de un equipo de desarrolladores juniors, nos encargamos de reunirnos con nuestros clientes para poder construir aplicaciones escalables en base a sus requerimientos",
+                "summary": "Parte esencial para la creación de un software de presupuestos hecho en Excel para una multinacional energética, enfocado en los usuarios finales.",
                 "achievements": [
-                    "Mejora de la UI",
-                    "Optimización del proyecto usando VBA"
+                    "Lidere las reuniones con el cliente, sondeando sus necesidades.",
+                    "Arquitectura del software potenciada con la creación de módulos y macros usando VBA.",
+                    "Gestión del ciclo de vida del software, siguiendo la metodología SCRUM."
                 ]
             },
             {
@@ -60,8 +72,8 @@
                 "enterprise": "MDY-BPO & Contact Center - Sede Colonial",
                 "summary": "Encargado de formar a nuevos trabajadores y a brindar capacitación continua a la plantilla, apoyándome en aplicaciones hechas por mí para poder desplegar mejor la información",
                 "achievements": [
-                    "Manejo de PCs remotos",
-                    "Mejora de Macros antiguas usando VBA y Excel",
+                    "Mejora de Macros antiguas usando VBA",
+                    "Despliegue efectivo de las actualizaciones en la plataforma, usando material comprensible y directo",
                     "Porcentaje de Altas y Nuevas Contrataciones: 85%"
                 ]
             }
