@@ -51,7 +51,7 @@ const fullPath = path.split('/').filter(Boolean)
             <header class="flex flex-col items-start tablet:flex-row justify-between mb-2 tablet:mb-4 lg:mb-6">
                 <h1 class="text-4xl tablet:text-6xl lg:text-7xl font-extrabold">{title}</h1>
                 <div class="flex gap-2 justify-center items-center">
-                    {urls.demo !== null && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-sea-blue dark:hover:bg-menu-dota dark:hover:text-plata hover:text-radiant transition-colors relative z-10 text-hard-radiant dark:text-orange">
+                    {urls.demo && <a href={urls.demo} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-sea-blue dark:hover:bg-menu-dota dark:hover:text-plata hover:text-radiant transition-colors relative z-10 text-hard-radiant dark:text-orange">
                         <ExternalLink size={30}/>
                     </a>}
                     {urls.code && <a href={urls.code} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-sea-blue dark:hover:bg-menu-dota dark:hover:text-plata hover:text-radiant transition-colors relative z-10 text-hard-radiant dark:text-orange">

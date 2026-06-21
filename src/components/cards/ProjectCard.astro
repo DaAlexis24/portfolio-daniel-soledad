@@ -35,7 +35,7 @@ const {title, img, description, stack, urls} = data
             })}
         </div>
         <div class="flex gap-4">
-            {urls.demo !== null && <Button type="fill" url={urls.demo} target="_blank">Demo <ExternalLink size={16} aria-hidden="true"/></Button>}{urls.code && <Button type="fill" url={urls.code} target="_blank">Code <Code size={16} aria-hidden="true"/></Button>}
+            {urls.demo && <Button type="fill" url={urls.demo} target="_blank">Demo <ExternalLink size={16} aria-hidden="true"/></Button>}{urls.code && <Button type="fill" url={urls.code} target="_blank">Code <Code size={16} aria-hidden="true"/></Button>}
         </div>
     </div>
 </article>

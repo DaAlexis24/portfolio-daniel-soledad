@@ -16,7 +16,7 @@ const {
     description,
     keywords = "",
     url = SITE_URL,
-    ogImage = "/src/assets/images/logo.webp"
+    ogImage = "/og-image.webp"
 } = Astro.props
 ---
 <!-- Meta Tags -->
@@ -24,8 +24,8 @@ const {
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
 <meta name="generator" content={Astro.generator} />
-<link rel="preload" href="/assets/fonts/rubik-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/fonts/cinzel-v26-latin-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/rubik-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/cinzel-v26-latin-800.woff2" as="font" type="font/woff2" crossorigin />
 <meta name="description" content={description}>
 <meta name="keywords" content={keywords}>
 <meta name="author" content={site.author}>

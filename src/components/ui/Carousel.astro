@@ -62,15 +62,15 @@ const {gallery , id = 'carousel'} = Astro.props
 
 <script>
   function initCarousels() {
-    document.querySelectorAll<HTMLElement>("[data-carousel-prev]").forEach((prevBtn) => {
-      const carousel = prevBtn.closest<HTMLElement>("[id]");
+    document.querySelectorAll("[data-carousel-prev]").forEach((prevBtn) => {
+      const carousel = prevBtn.closest("[id]");
       if (!carousel) return;
 
-      const items = carousel.querySelectorAll<HTMLElement>("[data-carousel-item]");
-      const indicators = carousel.querySelectorAll<HTMLElement>("[data-carousel-indicator]");
+      const items = carousel.querySelectorAll("[data-carousel-item]");
+      const indicators = carousel.querySelectorAll("[data-carousel-indicator]");
       let current = 0;
 
-      function goTo(index: number) {
+      function goTo(index) {
         items[current].classList.remove("opacity-100");
         items[current].classList.add("opacity-0", "pointer-events-none");
         indicators[current].classList.remove("bg-black");
@@ -88,7 +88,7 @@ const {gallery , id = 'carousel'} = Astro.props
         goTo(current === 0 ? items.length - 1 : current - 1);
       });
 
-      carousel.querySelector<HTMLElement>("[data-carousel-next]")?.addEventListener("click", () => {
+      carousel.querySelector("[data-carousel-next]")?.addEventListener("click", () => {
         goTo(current === items.length - 1 ? 0 : current + 1);
       });
 

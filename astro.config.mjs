@@ -7,6 +7,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://portfolio-daniel-soledad.netlify.app/",
     vite: {
         plugins: [tailwindcss()],
         build: {
