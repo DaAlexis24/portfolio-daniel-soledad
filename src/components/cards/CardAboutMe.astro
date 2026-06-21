@@ -57,7 +57,7 @@ const {type, className, mainContent, content, itemList, icon} = Astro.props
         border-radius: 1.5rem;
     }
     .bento-card:hover{
-        box-shadow: 0 0 0 2rem var(--color-radiant), ;
+        box-shadow: 0 0 0 2rem var(--color-radiant);
         transform: translateY(-0.2rem);
         transition: all 0.3s ease-in-out;
     }
@@ -66,6 +66,6 @@ const {type, className, mainContent, content, itemList, icon} = Astro.props
         border: 0.2rem solid var(--color-dire);
     }
     :global(.dark) .bento-card:hover{
-        box-shadow: 0 0 0 0 2rem var(--color-dire);
+        box-shadow: 0 0 0 2rem var(--color-dire);
     }
 </style>

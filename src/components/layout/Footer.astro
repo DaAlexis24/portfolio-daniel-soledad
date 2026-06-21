@@ -20,7 +20,7 @@ const iconMap = {
         </a>
         <span class="separator-line hidden sm:inline-block bg-light-black dark:bg-neutral-200 mt-5 -translate-y-1/2 w-px h-5"></span>
         <span class="text-sm font-rubik text-light-black sm:text-center dark:text-neutral-200">© {new Date().getFullYear()} 
-            <a href={SITE_URL || " "}>{site.author || " "}</a>
+            {SITE_URL ? <a href={SITE_URL}>{site.author || " "}</a> : <span>{site.author || " "}</span>}
         </span>
     </div>
     <div class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start overflow-hidden">

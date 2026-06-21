@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import { Home } from '@lucide/astro';
+---
+
+<Layout title="Página no encontrada | DS FullStack Dev" description="La página que buscas no existe" keywords="error, 404, no encontrado">
+    <div class="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-4 text-center">
+        <h1 class="text-8xl tablet:text-9xl font-extrabold text-dark-blue dark:text-dire">404</h1>
+        <p class="text-xl tablet:text-2xl text-medium-gray dark:text-plata max-w-md">
+            La página que buscas no existe o fue movida.
+        </p>
+        <Button type="solid" url="/">
+            <Home size={18} aria-hidden="true" /> Volver al inicio
+        </Button>
+    </div>
+</Layout>

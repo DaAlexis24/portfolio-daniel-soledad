@@ -47,7 +47,7 @@
     --color-radiant: #e7fcc0;
     --color-hard-radiant: #a1d04c;
     --color-medium-gray: #4a5565;
-    --color-shadow-header: rgba(0 2px 4px rgba(0, 0, 0, 0.1));
+    --color-shadow-header: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     /* Dark colors */
     --color-light-black: #222222;

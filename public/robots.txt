@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-daniel-soledad.netlify.app/sitemap-index.xml

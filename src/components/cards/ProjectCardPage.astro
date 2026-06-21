@@ -19,9 +19,9 @@ const {title, img, description, category, stack, urls} = data
         <a href={`/proyectos/${slug}`} transition:name={`img-${slug}`} rel="noopener noreferrer" title="Abre aquí" class="flex items-center p-2 rounded-full bg-radiant dark:bg-light-dire shadow-md transition hover:scale-110">
             <Expand size={20}/>
         </a>
-        <a href={urls.code} rel="noopener noreferrer" title="GitHub" target="_blank" class="flex items-center p-2 rounded-full bg-radiant dark:bg-light-dire shadow-md transition hover:scale-110">
+        {urls.code && <a href={urls.code} rel="noopener noreferrer" title="GitHub" target="_blank" class="flex items-center p-2 rounded-full bg-radiant dark:bg-light-dire shadow-md transition hover:scale-110">
             <Github size={20}/>
-        </a>
+        </a>}
     </div>
     <div class="flex flex-col px-4 justify-center items-center">
         <h3 class="mb-4 text-2xl leading-tight text-center">{title}</h3>
